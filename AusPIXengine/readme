@@ -1,1 +1,17 @@
-placeholder
+AusPIX_DGGS
+
+This is the base python DGGS engine for the AusPIX developmental DGGS by Geoscience Australia.
+
+These modules were sourced from:
+
+https://github.com/ANU-Linked-Earth-Data/dggs/tree/master/rhealpix_dggs
+
+•	Module code was then slightly changed to ensure calls to modules match the actual module names.
+
+•	Other slight changes were made to fix minor bugs.
+
+See other folder for wrappers and call these modules to perform specific tasks.
+
+
+
+
