@@ -3,7 +3,7 @@ The AusPIX DGGS is an Australian Government implimentation of the rHealpix DGGS 
 
 Included here is the rHealPIX "engine" and a series of scripts that use it for a variety of uses.
 
-
+![rhealpix](https://user-images.githubusercontent.com/23160509/53066271-23aa4680-3523-11e9-8e6c-2f042f9befbf.png)
 
 
 Source references for rHealPIX:
