@@ -1,7 +1,8 @@
 # AusPIX_DGGS
 The AusPIX DGGS is an Australian Government implimentation of the rHealpix DGGS model.
 
-Included in this repository is the rHealPIX "engine" and a series of scripts that use it for a variety of uses.
+Included in this repository is the rHealPIX "engine" and a series of scripts that use AusPIX in a variety of ways.
+Additionally there are several 'callable' modules that perform common tasks in DGGS space.
 
 
 Grid layout:
