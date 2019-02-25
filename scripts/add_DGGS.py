@@ -8,12 +8,12 @@ Created on Fri Sep  7 13:10:58 2018
 '''
 reads a csv file and adds DGGS to it
 
-This is for placeNames 
-Placenames is from 2018 
+This is for placeNames 2018
+ 
 A query was used to gather basic placename data into a csv
-Code fields were converted into their full text equivalent while building the query
+Fields presented as a code were converted into their full text equivalent while building the query
 
-This code reflects the number of decimal points in the lat and long by adjusting the size of the DGGS box.
+This script reflects the number of decimal points in the lat and long by adjusting the size of the DGGS box.
 In practice the DGGS boxes were often too big. Needs adjusting eg a level DGGS 5 box is too big for anything. 
 
 '''
@@ -21,13 +21,13 @@ In practice the DGGS boxes were often too big. Needs adjusting eg a level DGGS 5
 f = r'\\xxxxxxPlaceNames_2018\PLACENAMES_2018.csv'
 
 output = list()
-
+PYTHONPATH = r'\\prod.lan\active\ops\nlib\NLI Reform Project\Place Names Linked Data Project\AusPIX_DGGS\AusPIXengine/'
 
 import csv
 from dggs import RHEALPixDGGS
 
 import math
-from utils import my_round
+
 
 # make an instance        
 rdggs = RHEALPixDGGS()

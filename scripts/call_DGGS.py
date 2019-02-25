@@ -42,7 +42,12 @@ def poly_to_DGGS_tool(myPoly, thisRecord, resolution):  # one poly and the attri
 
     #print bounding box coords
     print('this bbox coords = ', bbox)
+    # bboxCent = [((bbox[0] + bbox[2])/2) , (((bbox[1] + bbox[3])/2))]
+    # print('bboxCent', bboxCent)
     print()
+
+
+
     # this bbox has the coords around the other way so need to massage them into the correct format
     # bbox = [SW 141.3928220030001, SW -32.01914569999997, NE 141.5659850120001, NE -31.883788544999966]
     # rHealpix requires nw and se coords
@@ -89,14 +94,16 @@ def poly_to_DGGS_tool(myPoly, thisRecord, resolution):  # one poly and the attri
     insidePoly = list()  # declare a new empty list
     # go through the list of DGGS centroids and discover which are 'within' the poly
     for item in bboxCentroids:
+        closeCent = bboxCentroids[0]  # save the first centroid in case there are none actually in the polygon
         # print()
         # print('doing ', item)
         point = Point(item[1], item[2])  # make a point from coords
         if point.within(thisPoly):
             insidePoly.append(item[0])
-
+    if len(insidePoly) == 0:
+        insidePoly.append(closeCent)
+        print('Close cell used')
     print('cells inside poly ', len(insidePoly))  # print the number found
-    print('example inside poly ', insidePoly[0])
     print('at DGGS resolution = ', resolution)  # print the resolution used
 
     # return the cells inside the polygon at this DGGS resolution
@@ -104,7 +111,7 @@ def poly_to_DGGS_tool(myPoly, thisRecord, resolution):  # one poly and the attri
 
 
 # find cells that can be coalesced into a bigger cell
-# 
+# makes things more complicated when using DGGS but saves on space and time somewhat ie less DGGS records
 def coalesce(dggs):  # recieves a list of dggs cell names inside a poly
 
     newDGGSrow = list()  # declare

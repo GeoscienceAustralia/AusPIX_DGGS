@@ -8,7 +8,10 @@ Created on Fri Sep  7 13:10:58 2018
 '''
 reads a shapefile and converts it to Turtle RDF
 
-This is originally for LGAs but can be adapted
+It reads from the shapefile attribute table.
+
+ACT DGGS to turtlefile
+including SA1 SA2 SA3 DEM LGA
 
 The header should comprise a list of prefixes.
 for example:
@@ -36,7 +39,7 @@ def write_list_to_file(output, out_filename):
 
 
 # read in the shapefile
-myFile = r'\\xxxxxxxxx\LGA\LGA_2018.shp'
+myFile = r'\\prod.lan\active\ops\nlib\NLI Reform Project\Place Names Linked Data Project\ACT_grid\MultiData_DGGS.shp'
 # read in the file
 r = shapefile.Reader(myFile)
 
@@ -49,25 +52,22 @@ output = list() # python list container for the output
 
 # put name of the file at the top of the turtle file
 output.append('# from filename ' + myFile)
+output.append('# processed by csv_shapefileToTurtle.py')
 output.append('# ' + today)  # add the day the ttl was produced
 output.append(' ')  # blank line
 
 # add the prefix to the output (there could be several needed)
 # ontology reference
-output.append('@prefix lga: <http://madeupLGA.data.gov.au/def/LGAs#> .')
+output.append('@prefix dggs: <http://ACT_dggs.data.gov.au/def/LGAs#> .')
 output.append(' ')  # blank line
 
 
 ''' work through attribute table one by one and build triples adding to output list as we go '''
-index = 0
+
 for feature in shapeRecs:  # for feature in attribute table
     print(feature.record)
     row = feature.record
     ''' build the output for each row  - most of the setup needs to be done just here below'''
-
-    # triple store subject (= name plus year)
-    year = str(row[8])
-    index02 = str(row[1]) + '_' + str(row[8])
 
     # subj = row[2] + year #concatinate to make unigue
     # # clean subject for triple store use
@@ -75,19 +75,19 @@ for feature in shapeRecs:  # for feature in attribute table
     # subj = subj.replace('(', '')
     # subj = subj.replace(')', '_')
     # subj = subj.replace("'", '_')
-
-    output.append('lga:' + str(index02) + '  ' + 'lga:LGA_code      ' + '"' + row[1] + '"' + ' .')
-    output.append('lga:' + str(index02) + '  ' + 'lga:LGA_name      ' +  '"' + row[2] + '"' + ' .')
-    output.append('lga:' + str(index02) + '  ' + 'lga:State         ' + '"' + row[4] + '"' + ' .')
-    output.append('lga:' + str(index02) + '  ' + 'lga:year          ' + '"' + year + '"' + ' .')
-    output.append('lga:' + str(index02) + '  ' + 'lga:area          ' + '"' + str(row[5]) + 'sqkm"' + ' .')
+    dem = str(round(row[3], 2))
+    output.append('dggs:' + row[2] + '  ' + 'dggs:hasDGGScode      ' + '"' + row[2] + '"' + ' .')
+    output.append('dggs:' + row[2] + '  ' + 'dggs:hasDEM           ' +  '"' + dem + '"' + ' .')
+    output.append('dggs:' + row[2] + '  ' + 'dggs:hasSA1code       ' + '"' + row[4] + '"' + ' .')
+    output.append('dggs:' + row[2] + '  ' + 'dggs:hasSA2code       ' + '"' + row[5] + '"' + ' .')
+    output.append('dggs:' + row[2] + '  ' + 'dggs:hasSA2name       ' + '"' + row[6] +  ' .')
 
     output.append(' ')
-    index += 1
+
 
 
 # overwrites previous file unless you rename or move it
-write_list_to_file(output, r'\\xxxx\lga02indexed02.ttl')
+write_list_to_file(output, r'\\prod.lan\active\ops\nlib\NLI Reform Project\Place Names Linked Data Project\data\MultiDataDGGS_ACT.ttl')
 
 
 

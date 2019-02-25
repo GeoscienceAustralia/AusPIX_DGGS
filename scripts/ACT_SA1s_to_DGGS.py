@@ -12,7 +12,7 @@ Created on Feb 2019
 This code calculates all the rHealPix cells in a polygon at the resolution asked for.
 It will calculate the DGGS cells and return them to the code.
 This example is based on ABS SA1
-ESRI not required 
+ESRI not required but python module shapefile is.
 
 Joseph Bell Geoscience Australia
 
@@ -78,7 +78,7 @@ def write_list_to_file(myList, filename):
 csvOutput = list()  # initialise
 dataList = list()
 dataList.append(('SA1code', 'SA2name16', 'Areakmsq', 'Num_cells', 'DGGS'))
-for feature in shapeRecs[0:10]: # slice of x polygons from the whole shapefile
+for feature in shapeRecs: # slice of x polygons from the whole shapefile [0:20]
     newRow = list()
 
     # filter out the ACT SA1's
@@ -98,17 +98,17 @@ for feature in shapeRecs[0:10]: # slice of x polygons from the whole shapefile
         print(type(area))
 #
 #
-        resolution = 7  # default resolution
+        resolution = 10  # default resolution
         # vary resolution based on area so bigger areas have bigger cells
 
-        if area < 1:
-            resolution = 12
-        elif area > 1 and area < 1000.0:
-            resolution = 9
-        elif area > 1000.0 and area < 30000.0:
-            resolution = 6
-        elif area > 30000:
-            resolution = 4
+        # if area < 1:
+        #     resolution = 12
+        # elif area > 1 and area < 1000.0:
+        #     resolution = 9
+        # elif area > 1000.0 and area < 30000.0:
+        #     resolution = 6
+        # elif area > 30000:
+        #     resolution = 4
 
         print('using resolution ', resolution)
         # calculate the approx cell width at this resolution
@@ -122,17 +122,17 @@ for feature in shapeRecs[0:10]: # slice of x polygons from the whole shapefile
         cells_in_poly = call_DGGS.poly_to_DGGS_tool(polyShape, polyRecord, resolution)
         print('number in polygon = ', len(cells_in_poly))
 #
-        print ('Reducing . . . ')
-        # reduce to biggest cells
-        theseReducedCells = call_DGGS.coalesce(cells_in_poly)
-        #print('reduced cells =', theseReducedCells)
-        print('1st number reduced cells =', len(theseReducedCells))
-
-        # reduce again
-        theseReducedCells = call_DGGS.coalesce(theseReducedCells)
-        #print('2nd reduced cells =', theseReducedCells)
-        print('2nd number reduced cells =', len(theseReducedCells))
+#         print ('Reducing . . . ')
+#         # reduce to biggest cells
+#         theseReducedCells = call_DGGS.coalesce(cells_in_poly)
+#         #print('reduced cells =', theseReducedCells)
+#         print('1st number reduced cells =', len(theseReducedCells))
 #
+#         # reduce again
+#         theseReducedCells = call_DGGS.coalesce(theseReducedCells)
+#         #print('2nd reduced cells =', theseReducedCells)
+#         print('2nd number reduced cells =', len(theseReducedCells))
+# #
 #     # reduce again
 #     theseReducedCells = call_DGGS.coalesce(theseReducedCells)
 #     # print('3nd reduced cells =', theseReducedCells)
@@ -150,11 +150,22 @@ for feature in shapeRecs[0:10]: # slice of x polygons from the whole shapefile
 #
 
         #newRow.append((feature.record[0], feature.record[4], feature.record[13], len(theseReducedCells), theseReducedCells))
-        dataList.append((feature.record[0], feature.record[4], feature.record[13], len(theseReducedCells), theseReducedCells))
+        dataList.append((feature.record[0], feature.record[4], feature.record[13], len(cells_in_poly), cells_in_poly))
 print()
 print()
 for item in dataList:
     print(item)
+
+for item in dataList:
+    if 'R7852335255' in item[4]:
+        print('found R7852335255')
+        print(item)
+
+
+
+
+
+
 #     print()
 #     print()
 #

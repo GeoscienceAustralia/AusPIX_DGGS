@@ -27,6 +27,10 @@ from geopy import distance
 
 f = r"\\xxxxx\Geonames_withDGGS.csv"
 
+
+
+
+
 #set up shapefile for output
 w = shapefile.Writer(shapefile.POINT)
 w.field('ID', 'C', '20')
