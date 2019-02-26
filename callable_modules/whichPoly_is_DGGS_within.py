@@ -10,13 +10,11 @@ Created on Feb 2019
 
 '''
 This code recieves a rHealpix cell and compares it to another data set eg SA1
-to return the polygon it's centroid is in
+to return the polygon it's centroid is inside
 
 Joseph Bell Geoscience Australia
 
 '''
-
-
 from dggs import RHEALPixDGGS
 from dggs import Cell
 import shapefile
