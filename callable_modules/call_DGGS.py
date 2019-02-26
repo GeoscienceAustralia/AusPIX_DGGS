@@ -46,8 +46,6 @@ def poly_to_DGGS_tool(myPoly, thisRecord, resolution):  # one poly and the attri
     # print('bboxCent', bboxCent)
     print()
 
-
-
     # this bbox has the coords around the other way so need to massage them into the correct format
     # bbox = [SW 141.3928220030001, SW -32.01914569999997, NE 141.5659850120001, NE -31.883788544999966]
     # rHealpix requires nw and se coords
