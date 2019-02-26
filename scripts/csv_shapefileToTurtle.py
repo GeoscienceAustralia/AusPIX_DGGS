@@ -39,7 +39,12 @@ def write_list_to_file(output, out_filename):
 
 
 # read in the shapefile
-myFile = r'\\prod.lan\active\ops\nlib\NLI Reform Project\Place Names Linked Data Project\ACT_grid\MultiData_DGGS.shp'
+
+#myFile = r'\\prod.lan\active\ops\nlib\NLI Reform Project\Place Names Linked Data Project\ACT_grid\MultiData_DGGS.shp'
+myFile = r'\\prod.lan\active\ops\nlib\NLI Reform Project\Place Names Linked Data Project\ACT_grid\ACT_DEM_andSA1etc.shp'
+
+
+
 # read in the file
 r = shapefile.Reader(myFile)
 
@@ -63,7 +68,7 @@ output.append(' ')  # blank line
 
 
 ''' work through attribute table one by one and build triples adding to output list as we go '''
-
+index = 0
 for feature in shapeRecs:  # for feature in attribute table
     print(feature.record)
     row = feature.record
@@ -75,19 +80,21 @@ for feature in shapeRecs:  # for feature in attribute table
     # subj = subj.replace('(', '')
     # subj = subj.replace(')', '_')
     # subj = subj.replace("'", '_')
-    dem = str(round(row[3], 2))
-    output.append('dggs:' + row[2] + '  ' + 'dggs:hasDGGScode      ' + '"' + row[2] + '"' + ' .')
-    output.append('dggs:' + row[2] + '  ' + 'dggs:hasDEM           ' +  '"' + dem + '"' + ' .')
-    output.append('dggs:' + row[2] + '  ' + 'dggs:hasSA1code       ' + '"' + row[4] + '"' + ' .')
-    output.append('dggs:' + row[2] + '  ' + 'dggs:hasSA2code       ' + '"' + row[5] + '"' + ' .')
-    output.append('dggs:' + row[2] + '  ' + 'dggs:hasSA2name       ' + '"' + row[6] +  ' .')
-
+    dem = str(round(row[1], 2))
+    output.append('dggs:' + str(index) + '    ' + 'dggs:hasDGGScode      ' + '"' + row[0] + '"' + ' .')
+    output.append('dggs:' + str(index) + '    ' + 'dggs:hasDEM_meters    ' +  '"' + dem + '"' + ' .')
+    output.append('dggs:' + str(index) + '    ' + 'dggs:hasSA1code       ' + '"' + row[2] + '"' + ' .')
+    output.append('dggs:' + str(index) + '    ' + 'dggs:hasSA2code       ' + '"' + row[3] + '"' + ' .')
+    output.append('dggs:' + str(index) + '    ' + 'dggs:hasSA2name       ' + '"' + row[4] +  ' .')
+    output.append('dggs:' + str(index) + '    ' + 'dggs:hasSA3code       ' + '"' + row[5] +  ' .')
+    output.append('dggs:' + str(index) + '    ' + 'dggs:hasSA3name       ' + '"' + row[6] +  ' .')
+    output.append('dggs:' + str(index) + '    ' + 'dggs:hasLGAcode       ' + '"' + row[8] +  ' .')
     output.append(' ')
-
+    index += 1
 
 
 # overwrites previous file unless you rename or move it
-write_list_to_file(output, r'\\prod.lan\active\ops\nlib\NLI Reform Project\Place Names Linked Data Project\data\MultiDataDGGS_ACT.ttl')
+write_list_to_file(output, r'\\prod.lan\active\ops\nlib\NLI Reform Project\Place Names Linked Data Project\data\MultiDataDGGS_ACT02.ttl')
 
 
 
