@@ -6,10 +6,16 @@ Included in this repository is the rHealPIX "engine" and a series of scripts tha
 Additionally there are several 'callable' modules that perform common tasks in DGGS space. These are in the "callable_modules" folder.
 
 
-Grid layout:
-
 ![rhealpix](https://user-images.githubusercontent.com/23160509/53066271-23aa4680-3523-11e9-8e6c-2f042f9befbf.png)
+Figure 1: World Grid layout:
 
+![maindggsregions](https://user-images.githubusercontent.com/23160509/53380635-35c43300-39c2-11e9-90ea-e457d03b8726.png)
+
+Figure 2: Major AusPIX divisions in the Australian region.
+
+![auspixlevel10](https://user-images.githubusercontent.com/23160509/53381199-1cbc8180-39c4-11e9-86d2-8a7a12b50faf.png)
+
+Figure 3:  Sample AusPIX level 10 cells (approx 140 x 140 m) near the lake in Canberra.
 
 Source references for rHealPIX:
 
