@@ -6,10 +6,11 @@ Included in this repository is the rHealPIX "engine" and a series of scripts tha
 Additionally there are several 'callable' modules that perform common tasks in DGGS space. These are in the "callable_modules" folder.
 
 
-Grid layout:
-
 ![rhealpix](https://user-images.githubusercontent.com/23160509/53066271-23aa4680-3523-11e9-8e6c-2f042f9befbf.png)
+Figure: Grid layout:
 
+![maindggsregions](https://user-images.githubusercontent.com/23160509/53380635-35c43300-39c2-11e9-90ea-e457d03b8726.png)
+Figure: Major AusPIX divisions in the Australian region.
 
 Source references for rHealPIX:
 
