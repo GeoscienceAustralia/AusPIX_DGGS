@@ -7,11 +7,15 @@ Additionally there are several 'callable' modules that perform common tasks in D
 
 
 ![rhealpix](https://user-images.githubusercontent.com/23160509/53066271-23aa4680-3523-11e9-8e6c-2f042f9befbf.png)
-Figure: Grid layout:
+Figure 1: World Grid layout:
 
 ![maindggsregions](https://user-images.githubusercontent.com/23160509/53380635-35c43300-39c2-11e9-90ea-e457d03b8726.png)
 
-Figure: Major AusPIX divisions in the Australian region.
+Figure 2: Major AusPIX divisions in the Australian region.
+
+![auspixlevel10](https://user-images.githubusercontent.com/23160509/53381199-1cbc8180-39c4-11e9-86d2-8a7a12b50faf.png)
+
+Figure 3:  Sample AusPIX level 10 cells (approx 140 x 140 m) in the ACT
 
 Source references for rHealPIX:
 
