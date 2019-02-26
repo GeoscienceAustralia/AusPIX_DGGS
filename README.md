@@ -10,6 +10,7 @@ Additionally there are several 'callable' modules that perform common tasks in D
 Figure: Grid layout:
 
 ![maindggsregions](https://user-images.githubusercontent.com/23160509/53380635-35c43300-39c2-11e9-90ea-e457d03b8726.png)
+
 Figure: Major AusPIX divisions in the Australian region.
 
 Source references for rHealPIX:
