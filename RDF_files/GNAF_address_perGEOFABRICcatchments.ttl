@@ -1,0 +1,185 @@
+# GNAF address to gofabric catchment - example only
+@prefix loci: <http://linked.data.gov.au/def/loci#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+
+@prefix : <http://linked.data.gov.au/dataset/addressescatchments/statement/> .
+@prefix s: <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject> .
+@prefix p: <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate> .
+@prefix o: <http://www.w3.org/1999/02/22-rdf-syntax-ns#object> .
+@prefix m: <http://linked.data.gov.au/def/loci/hadGenerationMethod> .
+@prefix g: <http://linked.data.gov.au/dataset/gnaf/addresses/> .
+@prefix w: <http://www.opengis.net/ont/geosparql#sfWithin> .
+@prefix c: <http://linked.data.gov.au/dataset/geofabric/catchment/> .
+@prefix i: <http://linked.data.gov.au/dataset/addressescatchments/SpatialIntersection> .
+
+
+<http://linked.data.gov.au/dataset/addressescatchments> a loci:Linkset ;
+  dct:title "Addresses Catchments Linkset" ;
+  dct:description """This LOC-I Project Linkset relates Address individuals in the G-NAF LOC-I Dataset to Catchment individuals in the Geofabric LOC-I Dataset. Every Address -> Catchment relation is geosparql:sfWithin, that is the Address is sfWithin the Catchment.
+
+The Linkset triples (Address sfWithin Catchment) are reified so that each triple is contained within an RDF Statement class instance so that the triple is numbered and the method used to generate the triple is given by the loci:hadGenerationMethod.
+
+The method used for all triples in this Linkset is the same and it is SpatialIntersection which is defined below.
+
+The triples for the main data in this linkset - the Statements relating Addresses to Catchments - are valid RDF in the Turtle syntax but an unusual namespacing arrangement is used so all terms are indicated with as few letters as possible, mostly one letter then colon, e.g. s: for http://www.w3.org/1999/02/22-rdf-syntax-ns#subject, rather than the more common rdf:subject. This is simply to reduce file size."""@en ;
+  dct:publisher <http://catalogue.linked.data.gov.au/org/psma> ;
+  dcat:contactPoint _:jo ;
+  dct:issued "2018-11-10"^^xsd:date ;
+  dct:modified "2018-11-10"^^xsd:date ;
+  dct:contributor <http://orcid.org/0000-0002-8742-7730> ;
+  void:objectsTarget <http://linked.data.gov.au/dataset/gnaf> ;
+  void:subjectTarget <http://linked.data.gov.au/dataset/geofabric> .
+
+_:jo a vcard:Individual ;
+  vcard:fn "Joseph Abhayaratna" ;
+  vcard:hasEmail <mailto:joseph.abhayaratna@psma.com.au> .
+
+<http://linked.data.gov.au/dataset/addressescatchments/SpatialIntersection> a prov:Plan ;
+  rdfs:label "Spatial Intersection Method" ;
+  rdfs:comment "This method uses the G-NAF LDAPI to page through the register, obtain the GeoSPARQL geometry for the address point, and then uses a OGC Simple Features Contains filter on the GeoFabric WFS Service"@en ;
+  prov:value <https://github.com/jabhay/linkset_creator> ;
+  prov:wasAttributedTo _:jo ;
+  prov:generatedAtTime "2018-11-02"^^xsd:date .
+
+#
+# Statements
+#
+:1
+  s: g:GAACT714845933 ;
+  p: w: ;
+  o: c:7155143 ;
+  m: i: .
+:2
+  s: g:GAACT714845934 ;
+  p: w: ;
+  o: c:6760208 ;
+  m: i: .
+:3
+  s: g:GAACT714845935 ;
+  p: w: ;
+  o: c:7154996 ;
+  m: i: .
+:4
+  s: g:GAACT714845936 ;
+  p: w: ;
+  o: c:7155143 ;
+  m: i: .
+:5
+  s: g:GAACT714845938 ;
+  p: w: ;
+  o: c:7157846 ;
+  m: i: .
+:6
+  s: g:GAACT714845939 ;
+  p: w: ;
+  o: c:7154996 ;
+  m: i: .
+:7
+  s: g:GAACT714845941 ;
+  p: w: ;
+  o: c:7157846 ;
+  m: i: .
+:8
+  s: g:GAACT714845942 ;
+  p: w: ;
+  o: c:7155143 ;
+  m: i: .
+:9
+  s: g:GAACT714845943 ;
+  p: w: ;
+  o: c:7154996 ;
+  m: i: .
+:10
+  s: g:GAACT714845944 ;
+  p: w: ;
+  o: c:7157846 ;
+  m: i: .
+:11
+  s: g:GAACT714845945 ;
+  p: w: ;
+  o: c:7155143 ;
+  m: i: .
+:12
+  s: g:GAACT714845946 ;
+  p: w: ;
+  o: c:7157846 ;
+  m: i: .
+:13
+  s: g:GAACT714845947 ;
+  p: w: ;
+  o: c:7154996 ;
+  m: i: .
+:14
+  s: g:GAACT714845949 ;
+  p: w: ;
+  o: c:7157846 ;
+  m: i: .
+:15
+  s: g:GAACT714845950 ;
+  p: w: ;
+  o: c:7155143 ;
+  m: i: .
+:16
+  s: g:GAACT714845951 ;
+  p: w: ;
+  o: c:7157846 ;
+  m: i: .
+:17
+  s: g:GAACT714845952 ;
+  p: w: ;
+  o: c:7154996 ;
+  m: i: .
+:18
+  s: g:GAACT714845953 ;
+  p: w: ;
+  o: c:7157846 ;
+  m: i: .
+:19
+  s: g:GAACT714845954 ;
+  p: w: ;
+  o: c:7155143 ;
+  m: i: .
+:20
+  s: g:GAACT714845955 ;
+  p: w: ;
+  o: c:7155143 ;
+  m: i: .
+:21
+  s: g:GAACT714845956 ;
+  p: w: ;
+  o: c:7157847 ;
+  m: i: .
+:22
+  s: g:GAACT714845957 ;
+  p: w: ;
+  o: c:7154996 ;
+  m: i: .
+:23
+  s: g:GAACT714845959 ;
+  p: w: ;
+  o: c:7155143 ;
+  m: i: .
+:24
+  s: g:GAACT714845961 ;
+  p: w: ;
+  o: c:7155143 ;
+  m: i: .
+:25
+  s: g:GAACT714845962 ;
+  p: w: ;
+  o: c:7155143 ;
+  m: i: .
+:26
+  s: g:GAACT714845963 ;
+  p: w: ;
+  o: c:7154996 ;
+  m: i: .
