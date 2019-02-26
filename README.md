@@ -15,7 +15,7 @@ Figure 2: Major AusPIX divisions in the Australian region.
 
 ![auspixlevel10](https://user-images.githubusercontent.com/23160509/53381199-1cbc8180-39c4-11e9-86d2-8a7a12b50faf.png)
 
-Figure 3:  Sample AusPIX level 10 cells (approx 140 x 140 m) in the ACT
+Figure 3:  Sample AusPIX level 10 cells (approx 140 x 140 m) near the lake in Canberra.
 
 Source references for rHealPIX:
 
