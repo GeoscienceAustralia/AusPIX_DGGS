@@ -1,0 +1,401 @@
+# from filename \\prod.lan\active\ops\nlib\NLI Reform Project\Place Names Linked Data Project\ACT_grid\ACT_DEM_andSA1etc.shp
+# processed by csv_shapefileToTurtle.py
+# 2019-02-26
+ 
+@prefix dggs: <http://ACT_dggs.data.gov.au/def/LGAs#> .
+ 
+dggs:0  dggs:hasDGGScode      "R7851557585" .
+dggs:0  dggs:hasDEM_meters    "1109.94" .
+dggs:0  dggs:hasSA1code       "10106154201" .
+dggs:0  dggs:hasSA2code       "101061542" .
+dggs:0  dggs:hasSA2name       "Yass Region .
+dggs:0  dggs:hasSA3code       "10106 .
+dggs:0  dggs:hasSA3name       "Young - Yass .
+dggs:0  dggs:hasLGAcode       "89399 .
+ 
+dggs:1  dggs:hasDGGScode      "R7851557586" .
+dggs:1  dggs:hasDEM_meters    "1019.43" .
+dggs:1  dggs:hasSA1code       "10106154201" .
+dggs:1  dggs:hasSA2code       "101061542" .
+dggs:1  dggs:hasSA2name       "Yass Region .
+dggs:1  dggs:hasSA3code       "10106 .
+dggs:1  dggs:hasSA3name       "Young - Yass .
+dggs:1  dggs:hasLGAcode       "89399 .
+ 
+dggs:2  dggs:hasDGGScode      "R7851557587" .
+dggs:2  dggs:hasDEM_meters    "1070.87" .
+dggs:2  dggs:hasSA1code       "80111114003" .
+dggs:2  dggs:hasSA2code       "801111140" .
+dggs:2  dggs:hasSA2name       "ACT - South West .
+dggs:2  dggs:hasSA3code       "80111 .
+dggs:2  dggs:hasSA3name       "Urriarra - Namadgi .
+dggs:2  dggs:hasLGAcode       "89399 .
+ 
+dggs:3  dggs:hasDGGScode      "R7851557588" .
+dggs:3  dggs:hasDEM_meters    "1094.87" .
+dggs:3  dggs:hasSA1code       "80111114003" .
+dggs:3  dggs:hasSA2code       "801111140" .
+dggs:3  dggs:hasSA2name       "ACT - South West .
+dggs:3  dggs:hasSA3code       "80111 .
+dggs:3  dggs:hasSA3name       "Urriarra - Namadgi .
+dggs:3  dggs:hasLGAcode       "89399 .
+ 
+dggs:4  dggs:hasDGGScode      "R7851557688" .
+dggs:4  dggs:hasDEM_meters    "1098.53" .
+dggs:4  dggs:hasSA1code       "10106154201" .
+dggs:4  dggs:hasSA2code       "101061542" .
+dggs:4  dggs:hasSA2name       "Yass Region .
+dggs:4  dggs:hasSA3code       "10106 .
+dggs:4  dggs:hasSA3name       "Young - Yass .
+dggs:4  dggs:hasLGAcode       "89399 .
+ 
+dggs:5  dggs:hasDGGScode      "R7851557747" .
+dggs:5  dggs:hasDEM_meters    "993.68" .
+dggs:5  dggs:hasSA1code       "10106154201" .
+dggs:5  dggs:hasSA2code       "101061542" .
+dggs:5  dggs:hasSA2name       "Yass Region .
+dggs:5  dggs:hasSA3code       "10106 .
+dggs:5  dggs:hasSA3name       "Young - Yass .
+dggs:5  dggs:hasLGAcode       "89399 .
+ 
+dggs:6  dggs:hasDGGScode      "R7851557748" .
+dggs:6  dggs:hasDEM_meters    "1009.14" .
+dggs:6  dggs:hasSA1code       "10106154201" .
+dggs:6  dggs:hasSA2code       "101061542" .
+dggs:6  dggs:hasSA2name       "Yass Region .
+dggs:6  dggs:hasSA3code       "10106 .
+dggs:6  dggs:hasSA3name       "Young - Yass .
+dggs:6  dggs:hasLGAcode       "89399 .
+ 
+dggs:7  dggs:hasDGGScode      "R7851557752" .
+dggs:7  dggs:hasDEM_meters    "1024.8" .
+dggs:7  dggs:hasSA1code       "10106154201" .
+dggs:7  dggs:hasSA2code       "101061542" .
+dggs:7  dggs:hasSA2name       "Yass Region .
+dggs:7  dggs:hasSA3code       "10106 .
+dggs:7  dggs:hasSA3name       "Young - Yass .
+dggs:7  dggs:hasLGAcode       "89399 .
+ 
+dggs:8  dggs:hasDGGScode      "R7851557753" .
+dggs:8  dggs:hasDEM_meters    "1078.34" .
+dggs:8  dggs:hasSA1code       "10106154201" .
+dggs:8  dggs:hasSA2code       "101061542" .
+dggs:8  dggs:hasSA2name       "Yass Region .
+dggs:8  dggs:hasSA3code       "10106 .
+dggs:8  dggs:hasSA3name       "Young - Yass .
+dggs:8  dggs:hasLGAcode       "89399 .
+ 
+dggs:9  dggs:hasDGGScode      "R7851557754" .
+dggs:9  dggs:hasDEM_meters    "1091.58" .
+dggs:9  dggs:hasSA1code       "80111114003" .
+dggs:9  dggs:hasSA2code       "801111140" .
+dggs:9  dggs:hasSA2name       "ACT - South West .
+dggs:9  dggs:hasSA3code       "80111 .
+dggs:9  dggs:hasSA3name       "Urriarra - Namadgi .
+dggs:9  dggs:hasLGAcode       "89399 .
+ 
+dggs:10  dggs:hasDGGScode      "R7851557755" .
+dggs:10  dggs:hasDEM_meters    "1066.93" .
+dggs:10  dggs:hasSA1code       "80111114003" .
+dggs:10  dggs:hasSA2code       "801111140" .
+dggs:10  dggs:hasSA2name       "ACT - South West .
+dggs:10  dggs:hasSA3code       "80111 .
+dggs:10  dggs:hasSA3name       "Urriarra - Namadgi .
+dggs:10  dggs:hasLGAcode       "89399 .
+ 
+dggs:11  dggs:hasDGGScode      "R7851557756" .
+dggs:11  dggs:hasDEM_meters    "1054.83" .
+dggs:11  dggs:hasSA1code       "80111114003" .
+dggs:11  dggs:hasSA2code       "801111140" .
+dggs:11  dggs:hasSA2name       "ACT - South West .
+dggs:11  dggs:hasSA3code       "80111 .
+dggs:11  dggs:hasSA3name       "Urriarra - Namadgi .
+dggs:11  dggs:hasLGAcode       "89399 .
+ 
+dggs:12  dggs:hasDGGScode      "R7851557757" .
+dggs:12  dggs:hasDEM_meters    "1084.29" .
+dggs:12  dggs:hasSA1code       "80111114003" .
+dggs:12  dggs:hasSA2code       "801111140" .
+dggs:12  dggs:hasSA2name       "ACT - South West .
+dggs:12  dggs:hasSA3code       "80111 .
+dggs:12  dggs:hasSA3name       "Urriarra - Namadgi .
+dggs:12  dggs:hasLGAcode       "89399 .
+ 
+dggs:13  dggs:hasDGGScode      "R7851557758" .
+dggs:13  dggs:hasDEM_meters    "1080.86" .
+dggs:13  dggs:hasSA1code       "80111114003" .
+dggs:13  dggs:hasSA2code       "801111140" .
+dggs:13  dggs:hasSA2name       "ACT - South West .
+dggs:13  dggs:hasSA3code       "80111 .
+dggs:13  dggs:hasSA3name       "Urriarra - Namadgi .
+dggs:13  dggs:hasLGAcode       "89399 .
+ 
+dggs:14  dggs:hasDGGScode      "R7851557762" .
+dggs:14  dggs:hasDEM_meters    "977.33" .
+dggs:14  dggs:hasSA1code       "10106154201" .
+dggs:14  dggs:hasSA2code       "101061542" .
+dggs:14  dggs:hasSA2name       "Yass Region .
+dggs:14  dggs:hasSA3code       "10106 .
+dggs:14  dggs:hasSA3name       "Young - Yass .
+dggs:14  dggs:hasLGAcode       "89399 .
+ 
+dggs:15  dggs:hasDGGScode      "R7851557764" .
+dggs:15  dggs:hasDEM_meters    "989.44" .
+dggs:15  dggs:hasSA1code       "10106154201" .
+dggs:15  dggs:hasSA2code       "101061542" .
+dggs:15  dggs:hasSA2name       "Yass Region .
+dggs:15  dggs:hasSA3code       "10106 .
+dggs:15  dggs:hasSA3name       "Young - Yass .
+dggs:15  dggs:hasLGAcode       "89399 .
+ 
+dggs:16  dggs:hasDGGScode      "R7851557765" .
+dggs:16  dggs:hasDEM_meters    "953.91" .
+dggs:16  dggs:hasSA1code       "80111114003" .
+dggs:16  dggs:hasSA2code       "801111140" .
+dggs:16  dggs:hasSA2name       "ACT - South West .
+dggs:16  dggs:hasSA3code       "80111 .
+dggs:16  dggs:hasSA3name       "Urriarra - Namadgi .
+dggs:16  dggs:hasLGAcode       "89399 .
+ 
+dggs:17  dggs:hasDGGScode      "R7851557766" .
+dggs:17  dggs:hasDEM_meters    "1021.33" .
+dggs:17  dggs:hasSA1code       "80111114003" .
+dggs:17  dggs:hasSA2code       "801111140" .
+dggs:17  dggs:hasSA2name       "ACT - South West .
+dggs:17  dggs:hasSA3code       "80111 .
+dggs:17  dggs:hasSA3name       "Urriarra - Namadgi .
+dggs:17  dggs:hasLGAcode       "89399 .
+ 
+dggs:18  dggs:hasDGGScode      "R7851557767" .
+dggs:18  dggs:hasDEM_meters    "961.69" .
+dggs:18  dggs:hasSA1code       "80111114003" .
+dggs:18  dggs:hasSA2code       "801111140" .
+dggs:18  dggs:hasSA2name       "ACT - South West .
+dggs:18  dggs:hasSA3code       "80111 .
+dggs:18  dggs:hasSA3name       "Urriarra - Namadgi .
+dggs:18  dggs:hasLGAcode       "89399 .
+ 
+dggs:19  dggs:hasDGGScode      "R7851557768" .
+dggs:19  dggs:hasDEM_meters    "925.61" .
+dggs:19  dggs:hasSA1code       "80111114003" .
+dggs:19  dggs:hasSA2code       "801111140" .
+dggs:19  dggs:hasSA2name       "ACT - South West .
+dggs:19  dggs:hasSA3code       "80111 .
+dggs:19  dggs:hasSA3name       "Urriarra - Namadgi .
+dggs:19  dggs:hasLGAcode       "89399 .
+ 
+dggs:20  dggs:hasDGGScode      "R7851557770" .
+dggs:20  dggs:hasDEM_meters    "954.58" .
+dggs:20  dggs:hasSA1code       "10106154201" .
+dggs:20  dggs:hasSA2code       "101061542" .
+dggs:20  dggs:hasSA2name       "Yass Region .
+dggs:20  dggs:hasSA3code       "10106 .
+dggs:20  dggs:hasSA3name       "Young - Yass .
+dggs:20  dggs:hasLGAcode       "89399 .
+ 
+dggs:21  dggs:hasDGGScode      "R7851557771" .
+dggs:21  dggs:hasDEM_meters    "980.39" .
+dggs:21  dggs:hasSA1code       "80111114003" .
+dggs:21  dggs:hasSA2code       "801111140" .
+dggs:21  dggs:hasSA2name       "ACT - South West .
+dggs:21  dggs:hasSA3code       "80111 .
+dggs:21  dggs:hasSA3name       "Urriarra - Namadgi .
+dggs:21  dggs:hasLGAcode       "89399 .
+ 
+dggs:22  dggs:hasDGGScode      "R7851557772" .
+dggs:22  dggs:hasDEM_meters    "999.41" .
+dggs:22  dggs:hasSA1code       "80111114003" .
+dggs:22  dggs:hasSA2code       "801111140" .
+dggs:22  dggs:hasSA2name       "ACT - South West .
+dggs:22  dggs:hasSA3code       "80111 .
+dggs:22  dggs:hasSA3name       "Urriarra - Namadgi .
+dggs:22  dggs:hasLGAcode       "89399 .
+ 
+dggs:23  dggs:hasDGGScode      "R7851557773" .
+dggs:23  dggs:hasDEM_meters    "941.73" .
+dggs:23  dggs:hasSA1code       "80111114003" .
+dggs:23  dggs:hasSA2code       "801111140" .
+dggs:23  dggs:hasSA2name       "ACT - South West .
+dggs:23  dggs:hasSA3code       "80111 .
+dggs:23  dggs:hasSA3name       "Urriarra - Namadgi .
+dggs:23  dggs:hasLGAcode       "89399 .
+ 
+dggs:24  dggs:hasDGGScode      "R7851557774" .
+dggs:24  dggs:hasDEM_meters    "975.32" .
+dggs:24  dggs:hasSA1code       "80111114003" .
+dggs:24  dggs:hasSA2code       "801111140" .
+dggs:24  dggs:hasSA2name       "ACT - South West .
+dggs:24  dggs:hasSA3code       "80111 .
+dggs:24  dggs:hasSA3name       "Urriarra - Namadgi .
+dggs:24  dggs:hasLGAcode       "89399 .
+ 
+dggs:25  dggs:hasDGGScode      "R7851557775" .
+dggs:25  dggs:hasDEM_meters    "994.23" .
+dggs:25  dggs:hasSA1code       "80111114003" .
+dggs:25  dggs:hasSA2code       "801111140" .
+dggs:25  dggs:hasSA2name       "ACT - South West .
+dggs:25  dggs:hasSA3code       "80111 .
+dggs:25  dggs:hasSA3name       "Urriarra - Namadgi .
+dggs:25  dggs:hasLGAcode       "89399 .
+ 
+dggs:26  dggs:hasDGGScode      "R7851557776" .
+dggs:26  dggs:hasDEM_meters    "945.32" .
+dggs:26  dggs:hasSA1code       "80111114003" .
+dggs:26  dggs:hasSA2code       "801111140" .
+dggs:26  dggs:hasSA2name       "ACT - South West .
+dggs:26  dggs:hasSA3code       "80111 .
+dggs:26  dggs:hasSA3name       "Urriarra - Namadgi .
+dggs:26  dggs:hasLGAcode       "89399 .
+ 
+dggs:27  dggs:hasDGGScode      "R7851557777" .
+dggs:27  dggs:hasDEM_meters    "978.47" .
+dggs:27  dggs:hasSA1code       "80111114003" .
+dggs:27  dggs:hasSA2code       "801111140" .
+dggs:27  dggs:hasSA2name       "ACT - South West .
+dggs:27  dggs:hasSA3code       "80111 .
+dggs:27  dggs:hasSA3name       "Urriarra - Namadgi .
+dggs:27  dggs:hasLGAcode       "89399 .
+ 
+dggs:28  dggs:hasDGGScode      "R7851557778" .
+dggs:28  dggs:hasDEM_meters    "988.04" .
+dggs:28  dggs:hasSA1code       "80111114003" .
+dggs:28  dggs:hasSA2code       "801111140" .
+dggs:28  dggs:hasSA2name       "ACT - South West .
+dggs:28  dggs:hasSA3code       "80111 .
+dggs:28  dggs:hasSA3name       "Urriarra - Namadgi .
+dggs:28  dggs:hasLGAcode       "89399 .
+ 
+dggs:29  dggs:hasDGGScode      "R7851557780" .
+dggs:29  dggs:hasDEM_meters    "1028.1" .
+dggs:29  dggs:hasSA1code       "80111114003" .
+dggs:29  dggs:hasSA2code       "801111140" .
+dggs:29  dggs:hasSA2name       "ACT - South West .
+dggs:29  dggs:hasSA3code       "80111 .
+dggs:29  dggs:hasSA3name       "Urriarra - Namadgi .
+dggs:29  dggs:hasLGAcode       "89399 .
+ 
+dggs:30  dggs:hasDGGScode      "R7851557781" .
+dggs:30  dggs:hasDEM_meters    "1047.12" .
+dggs:30  dggs:hasSA1code       "80111114003" .
+dggs:30  dggs:hasSA2code       "801111140" .
+dggs:30  dggs:hasSA2name       "ACT - South West .
+dggs:30  dggs:hasSA3code       "80111 .
+dggs:30  dggs:hasSA3name       "Urriarra - Namadgi .
+dggs:30  dggs:hasLGAcode       "89399 .
+ 
+dggs:31  dggs:hasDGGScode      "R7851557782" .
+dggs:31  dggs:hasDEM_meters    "1031.47" .
+dggs:31  dggs:hasSA1code       "80111114003" .
+dggs:31  dggs:hasSA2code       "801111140" .
+dggs:31  dggs:hasSA2name       "ACT - South West .
+dggs:31  dggs:hasSA3code       "80111 .
+dggs:31  dggs:hasSA3name       "Urriarra - Namadgi .
+dggs:31  dggs:hasLGAcode       "89399 .
+ 
+dggs:32  dggs:hasDGGScode      "R7851557783" .
+dggs:32  dggs:hasDEM_meters    "986.14" .
+dggs:32  dggs:hasSA1code       "80111114003" .
+dggs:32  dggs:hasSA2code       "801111140" .
+dggs:32  dggs:hasSA2name       "ACT - South West .
+dggs:32  dggs:hasSA3code       "80111 .
+dggs:32  dggs:hasSA3name       "Urriarra - Namadgi .
+dggs:32  dggs:hasLGAcode       "89399 .
+ 
+dggs:33  dggs:hasDGGScode      "R7851557784" .
+dggs:33  dggs:hasDEM_meters    "967.94" .
+dggs:33  dggs:hasSA1code       "80111114003" .
+dggs:33  dggs:hasSA2code       "801111140" .
+dggs:33  dggs:hasSA2name       "ACT - South West .
+dggs:33  dggs:hasSA3code       "80111 .
+dggs:33  dggs:hasSA3name       "Urriarra - Namadgi .
+dggs:33  dggs:hasLGAcode       "89399 .
+ 
+dggs:34  dggs:hasDGGScode      "R7851557785" .
+dggs:34  dggs:hasDEM_meters    "957.18" .
+dggs:34  dggs:hasSA1code       "80111114003" .
+dggs:34  dggs:hasSA2code       "801111140" .
+dggs:34  dggs:hasSA2name       "ACT - South West .
+dggs:34  dggs:hasSA3code       "80111 .
+dggs:34  dggs:hasSA3name       "Urriarra - Namadgi .
+dggs:34  dggs:hasLGAcode       "89399 .
+ 
+dggs:35  dggs:hasDGGScode      "R7851557786" .
+dggs:35  dggs:hasDEM_meters    "959.52" .
+dggs:35  dggs:hasSA1code       "80111114003" .
+dggs:35  dggs:hasSA2code       "801111140" .
+dggs:35  dggs:hasSA2name       "ACT - South West .
+dggs:35  dggs:hasSA3code       "80111 .
+dggs:35  dggs:hasSA3name       "Urriarra - Namadgi .
+dggs:35  dggs:hasLGAcode       "89399 .
+ 
+dggs:36  dggs:hasDGGScode      "R7851557787" .
+dggs:36  dggs:hasDEM_meters    "909.99" .
+dggs:36  dggs:hasSA1code       "80111114003" .
+dggs:36  dggs:hasSA2code       "801111140" .
+dggs:36  dggs:hasSA2name       "ACT - South West .
+dggs:36  dggs:hasSA3code       "80111 .
+dggs:36  dggs:hasSA3name       "Urriarra - Namadgi .
+dggs:36  dggs:hasLGAcode       "89399 .
+ 
+dggs:37  dggs:hasDGGScode      "R7851557788" .
+dggs:37  dggs:hasDEM_meters    "903.01" .
+dggs:37  dggs:hasSA1code       "80111114003" .
+dggs:37  dggs:hasSA2code       "801111140" .
+dggs:37  dggs:hasSA2name       "ACT - South West .
+dggs:37  dggs:hasSA3code       "80111 .
+dggs:37  dggs:hasSA3name       "Urriarra - Namadgi .
+dggs:37  dggs:hasLGAcode       "89399 .
+ 
+dggs:38  dggs:hasDGGScode      "R7851557805" .
+dggs:38  dggs:hasDEM_meters    "882.07" .
+dggs:38  dggs:hasSA1code       "10106154201" .
+dggs:38  dggs:hasSA2code       "101061542" .
+dggs:38  dggs:hasSA2name       "Yass Region .
+dggs:38  dggs:hasSA3code       "10106 .
+dggs:38  dggs:hasSA3name       "Young - Yass .
+dggs:38  dggs:hasLGAcode       "89399 .
+ 
+dggs:39  dggs:hasDGGScode      "R7851557806" .
+dggs:39  dggs:hasDEM_meters    "960.43" .
+dggs:39  dggs:hasSA1code       "10106154201" .
+dggs:39  dggs:hasSA2code       "101061542" .
+dggs:39  dggs:hasSA2name       "Yass Region .
+dggs:39  dggs:hasSA3code       "10106 .
+dggs:39  dggs:hasSA3name       "Young - Yass .
+dggs:39  dggs:hasLGAcode       "89399 .
+ 
+dggs:40  dggs:hasDGGScode      "R7851557807" .
+dggs:40  dggs:hasDEM_meters    "949.11" .
+dggs:40  dggs:hasSA1code       "10106154201" .
+dggs:40  dggs:hasSA2code       "101061542" .
+dggs:40  dggs:hasSA2name       "Yass Region .
+dggs:40  dggs:hasSA3code       "10106 .
+dggs:40  dggs:hasSA3name       "Young - Yass .
+dggs:40  dggs:hasLGAcode       "89399 .
+ 
+dggs:41  dggs:hasDGGScode      "R7851557808" .
+dggs:41  dggs:hasDEM_meters    "915.67" .
+dggs:41  dggs:hasSA1code       "80111114003" .
+dggs:41  dggs:hasSA2code       "801111140" .
+dggs:41  dggs:hasSA2name       "ACT - South West .
+dggs:41  dggs:hasSA3code       "80111 .
+dggs:41  dggs:hasSA3name       "Urriarra - Namadgi .
+dggs:41  dggs:hasLGAcode       "89399 .
+ 
+dggs:42  dggs:hasDGGScode      "R7851557811" .
+dggs:42  dggs:hasDEM_meters    "920.02" .
+dggs:42  dggs:hasSA1code       "10106154201" .
+dggs:42  dggs:hasSA2code       "101061542" .
+dggs:42  dggs:hasSA2name       "Yass Region .
+dggs:42  dggs:hasSA3code       "10106 .
+dggs:42  dggs:hasSA3name       "Young - Yass .
+dggs:42  dggs:hasLGAcode       "89399 .
+ 
+dggs:43  dggs:hasDGGScode      "R7851557812" .
+dggs:43  dggs:hasDEM_meters    "985.58" .
+dggs:43  dggs:hasSA1code       "80111114003" .
+dggs:43  dggs:hasSA2code       "801111140" .
+dggs:43  dggs:hasSA2name       "ACT - South West .
+dggs:43  dggs:hasSA3code       "80111 .
+dggs:43  dggs:hasSA3name       "Urriarra - Namadgi .
+dggs:43  dggs:hasLGAcode       "89399 .
