@@ -1,5 +1,6 @@
 # filename \\prod.lan\active\ops\nlib\NLI Reform Project\Place Names Linked Data Project\PlaceNames2012\Places_fromQueryDGGS.csv
-# converts csv file into a turtle format triple store.
+# turtle format triple store converted from .csv data file.
+# can be Sparql queried directly or loaded into for example jena fuseky server
 
 @prefix pn: <http://linked.data.gov.au/def/placenames#> 
  
