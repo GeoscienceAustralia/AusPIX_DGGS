@@ -1,5 +1,6 @@
 # filename \\prod.lan\active\ops\nlib\NLI Reform Project\Place Names Linked Data Project\PlaceNames2012\Places_fromQueryDGGS.csv
- 
+# converts csv file into a turtle format triple store.
+
 @prefix pn: <http://linked.data.gov.au/def/placenames#> 
  
 pn:GA34218  pn:hasPlaceName              "Un-named 578" .
