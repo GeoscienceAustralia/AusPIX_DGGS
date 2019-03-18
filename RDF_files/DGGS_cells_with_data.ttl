@@ -1,6 +1,8 @@
 # from filename \\prod.lan\active\ops\nlib\NLI Reform Project\Place Names Linked Data Project\ACT_grid\ACT_DEM_andSA1etc.shp
 # processed by csv_shapefileToTurtle.py
 # 2019-02-26
+# turtle format triple store converted from .csv data file.
+# can be Sparql queried directly or loaded into for example jena fuseky server
  
 @prefix dggs: <http://ACT_dggs.data.gov.au/def/LGAs#> .
  

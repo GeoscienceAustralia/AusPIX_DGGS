@@ -1,4 +1,7 @@
 # GNAF address to gofabric catchment - example only
+# example of CSIRO linked dataset
+# addresses per geofabric catchements
+
 @prefix loci: <http://linked.data.gov.au/def/loci#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
