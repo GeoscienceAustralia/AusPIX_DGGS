@@ -124,7 +124,8 @@ and orient the DGGS so that the planar origin (0, 0) is on Auckland, New Zealand
 #                  http: //www.gnu.org/licenses/
 #*****************************************************************************
 # Import third-party modules.
-from numpy import array, base_repr, ceil, log, pi, sign
+import math
+from numpy import array, base_repr, ceil, log, pi, sign, rad2deg
 from scipy import integrate
 # Import standard modules.
 from itertools import product
@@ -2247,8 +2248,21 @@ class Cell(object):
             return 'dart'
         # Must be a skew quad then.
         return 'skew_quad'
-        
+
+
+
     def centroid(self, plane=True):
+        # def integralXY(x, y):  # experiment to debug only
+        #     print('values', x, y, xc, pi, R_A)
+        #     print('piRA', (pi * R_A))
+        #     print('logbit', (1 - 2 * y / (pi * R_A)))
+        #
+        #     myVal = log(abs(1 - 2 * y / (pi * R_A))) + xc * x * y
+        #     print('myVal', myVal)
+        #
+        #     myint = (pi / 8) * x * (2 * R_A * xc - x) *\
+        #             log(1 - 2 * y / (pi * R_A)) + xc * x * y
+        #     return myint
         r"""
         Return the centroid of this planar or ellipsoidal cell.
         
@@ -2284,58 +2298,65 @@ class Cell(object):
         y1 = min([v[1] for v in planar_vertices])
         y2 = max([v[1] for v in planar_vertices])
         area = (x2 - x1)**2
-        lam = lambda x, y: self.rdggs.rhealpix(x, y, inverse=True)[0]
+        lam = lambda x, y: self.rdggs.rhealpix(x, y, inverse=True)[0]   # not used??
         phi = lambda x, y: self.rdggs.rhealpix(x, y, inverse=True)[1]
         if shape == 'dart':
             lam_bar = nucleus[0]
             phi_bar = (1/area)*\
-                      integrate.dblquad(phi, y1, y2, \
-                                        lambda x: x1, lambda x: x2)[0]
+                      integrate.dblquad(phi, y1, y2, lambda x: x1, lambda x: x2)[0]
             return lam_bar, phi_bar 
+
 
         # Now shape == 'skew_quad'.
         # phi_bar formula same as dart case.
         phi_bar = (1/area)*\
                   integrate.dblquad(phi, y1, y2, lambda x: x1, lambda x: x2)[0]
         # lam_bar formula changes.
-        # Option 1 (clean, possibly slow): 
+
+        # Option 1 (clean, possibly slow):
         # Compute lam_bar by numerical integration.
         lam_bar = (1/area)*\
               integrate.dblquad(lam, y1, y2, lambda x: x1, lambda x: x2)[0]
 
-
         # fix cases where skew_quad is 180 degrees out - added by Joseph
         # only happens here with skew_quad
-        lam_bar = lam_bar + 180   # add 180 deg - may not work for
+        #lam_bar = lam_bar + 180   # add 180 deg - may not work for
 
 
-
-        # Option 2 (messy, possibly fast): 
-        # Evaluate the integral symbolically and then plug in values. 
+        # # opened option 2 to see it will fix S lonitude problem
+        # # Option 2 (messy, possibly fast):
+        # # Evaluate the integral symbolically and then plug in values.
         # w = x2 - x1 # Cell width.
         # R_A = self.rdggs.ellipsoid.R_A
-        # hx0, hy0 = self.rdggs.healpix(*nucleus) 
+        # hx0, hy0 = self.rdggs.healpix(*nucleus)
         # # x and y extremes of the HEALPix projection of this cell's interior:
         # hx1 = hx0 - w/2
         # hx2 = hx0 + w/2
-        # # Without loss of generality, force HEALPix y coordinates into 
+        # # Without loss of generality, force HEALPix y coordinates into
         # # the northern hemisphere:
-        # hy1 = abs(hy0) - w/2 
-        # hy2 = abs(hy0) + w/2   
+        # hy1 = abs(hy0) - w/2
+        # hy2 = abs(hy0) + w/2
         # # Compute xc.
-        # cap_number = floor(2*hx0/(pi*R_A) + 2)
-        # if cap_number >= 4: 
-        #     # Rounding error. 
-        #     cap_number = 3
-        # xc = -3*pi/4 + (pi/2)*cap_number    
-        # integral = lambda x, y: (pi/8)*x*(2*R_A*xc - x)*\
-        #            log(1 - 2*y/(pi*R_A)) + xc*x*y
-        # lam_bar = (1/area)*\
-        #           (integral(hx2, hy2) - integral(hx1, hy2) -\
-        #            integral(hx2, hy1) + integral(hx1, hy1))
+        # cap_number = math.floor(2*hx0/(pi*R_A) + 2)
+        # if cap_number >= 4:
+        #      # Rounding error.
+        #      cap_number = 3
+        # #print('cap num', cap_number)
+        # xc = -3*pi/4 + (pi/2)*cap_number
+        # #print('xc =', xc)
+        # print(' ')
+        # #integral = lambda x, y: ((pi/8)*x*(2*R_A*xc - x)* log(1 - 2*y/(pi*R_A)) + xc*x*y)
+        #
+        #
+        # integral = lambda x, y: (pi/8)*x*(2*R_A*xc - x)* \
+        #                 log(abs(1 - 2 * y / (pi * R_A))) + xc*x*y  # trying to log a negative number - added abs but dosen't fix
+        #
+        # lam_bar = (1/area)* (integral(hx2, hy2) - integral(hx1, hy2) - integral(hx2, hy1) + integral(hx1, hy1))
+
+
         # if not self.rdggs.ellipsoid.radians:
-        #     # Convert to degrees.
-        #     lam_bar = rad2deg(lam_bar)
+        #      # Convert to degrees.
+        #      lam_bar = rad2deg(lam_bar)
         #print(lam_bar, phi_bar)
         return lam_bar, phi_bar
         
