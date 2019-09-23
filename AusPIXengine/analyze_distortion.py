@@ -15,9 +15,9 @@ CHANGELOG:
 #*****************************************************************************
 
 # Import my modules.
-from rhealpix_dggs.ellipsoids import EMR_SPHERE, WGS84_ELLIPSOID
-from rhealpix_dggs.projection_wrapper import Proj
-from rhealpix_dggs.distortion import distortion_stats
+from AusPIXengine.ellipsoids import EMR_SPHERE, WGS84_ELLIPSOID
+from AusPIXengine.projection_wrapper import Proj
+from AusPIXengine.distortion import distortion_stats
 
 if __name__ == '__main__': 
     # List of map projections to analyze.
