@@ -26,7 +26,7 @@ By 'ellipsoid' below, i mean an oblate ellipsoid of revolution.
 # Import third-party modules.
 from numpy import pi, rad2deg, deg2rad, sin, cos, argmax, sqrt, arctan, arcsin, array
 # Import my modules.
-from rhealpix_dggs.utils import auth_lat, auth_rad
+from AusPIXengine.utils import auth_lat, auth_rad
 
 face_centers_lonlat = [
   (0, pi/2), 

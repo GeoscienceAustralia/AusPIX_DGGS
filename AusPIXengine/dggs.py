@@ -133,10 +133,10 @@ from random import uniform, randint
 from colorsys import hsv_to_rgb
 
 # Import my modules.
-import pj_rhealpix as pjr
-import projection_wrapper as pw
-from ellipsoids import WGS84_ELLIPSOID, WGS84_ELLIPSOID_RADIANS, UNIT_SPHERE, UNIT_SPHERE_RADIANS
-from utils import my_round
+import AusPIXengine.pj_rhealpix as pjr
+import AusPIXengine.projection_wrapper as pw
+from AusPIXengine.ellipsoids import WGS84_ELLIPSOID, WGS84_ELLIPSOID_RADIANS, UNIT_SPHERE, UNIT_SPHERE_RADIANS
+from AusPIXengine.utils import my_round
     
 class RHEALPixDGGS(object):
     r"""

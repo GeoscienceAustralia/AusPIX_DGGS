@@ -9,7 +9,7 @@ Created on 1st March 2019
 small module to find the DGGS cell for a point (long, lat) 
 
 '''
-from dggs import RHEALPixDGGS
+from AusPIXengine.dggs import RHEALPixDGGS
 rdggs = RHEALPixDGGS()
 
 def latlong_to_DGGS(coords, resolution):

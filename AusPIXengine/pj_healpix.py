@@ -22,7 +22,7 @@ By 'ellipsoid' below, i mean an oblate ellipsoid of revolution.
 # Import third-party modules.
 from numpy import pi, floor, sqrt, sin, arcsin, sign, array, deg2rad, rad2deg
 # Import my modules.
-from utils import my_round, auth_lat, auth_rad
+from AusPIXengine.utils import my_round, auth_lat, auth_rad
 
 def healpix_sphere(lam, phi):
     r"""

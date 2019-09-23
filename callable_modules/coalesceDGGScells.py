@@ -13,7 +13,7 @@ Joseph Bell Geoscience Australia
 '''
 
 
-from dggs import RHEALPixDGGS
+from AusPIXengine.dggs import RHEALPixDGGS
 
 
 # make an instance

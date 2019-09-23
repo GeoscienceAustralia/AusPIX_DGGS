@@ -20,7 +20,7 @@ CHANGELOG:
 # Import third-party modules.
 from numpy import pi, floor, sqrt, sin, cos, arcsin, deg2rad, rad2deg, array, median 
 # Import my modules.
-from rhealpix_dggs.utils import my_round, wrap_longitude, wrap_latitude
+from AusPIXengine.utils import my_round, wrap_longitude, wrap_latitude
 
 def fff_coeffs(T, lam, phi):
     r"""

@@ -20,8 +20,8 @@ By 'ellipsoid' below, i mean an oblate ellipsoid of revolution.
 # Import third-party modules.
 from numpy import pi, sign, array, identity, dot, deg2rad, rad2deg 
 # Import my modules.
-from pj_healpix import healpix_sphere, healpix_sphere_inverse, healpix_ellipsoid, healpix_ellipsoid_inverse
-from utils import my_round, auth_rad
+from AusPIXengine.pj_healpix import healpix_sphere, healpix_sphere_inverse, healpix_ellipsoid, healpix_ellipsoid_inverse
+from AusPIXengine.utils import my_round, auth_rad
 
 # Matrix for anticlockwise rotation by pi/2: 
 ROTATE1 = array([[0, -1], [1, 0]])

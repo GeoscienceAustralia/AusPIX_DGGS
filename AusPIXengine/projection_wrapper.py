@@ -23,8 +23,8 @@ import pyproj
 # Import standard modules.
 import importlib
 # Import my modules.
-from utils import my_round, wrap_longitude, wrap_latitude
-from ellipsoids import WGS84_ELLIPSOID
+from AusPIXengine.utils import my_round, wrap_longitude, wrap_latitude
+from AusPIXengine.ellipsoids import WGS84_ELLIPSOID
 
 
 # Homemade map projections, as opposed to those in the PROJ.4 library.

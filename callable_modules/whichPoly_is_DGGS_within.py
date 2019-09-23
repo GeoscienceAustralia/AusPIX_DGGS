@@ -15,11 +15,12 @@ to return the polygon it's centroid is inside
 Joseph Bell Geoscience Australia
 
 '''
-from dggs import RHEALPixDGGS
-from dggs import Cell
+from AusPIXengine.dggs import RHEALPixDGGS
+from AusPIXengine.dggs import Cell
 import shapefile
+import os
 
-import call_DGGS  # returns the DGGS cells for a shapefile poly
+from callable_modules import call_DGGS  # returns the DGGS cells for a shapefile poly
 
 from shapely.geometry import shape, Point, Polygon  # used in the function below
 import csv
@@ -87,12 +88,14 @@ def get_matching_polygon( rHealpix_cell, shapeFile_path):
 if __name__ == '__main__':
     # main
     #SA1
-    myFile = r'\\prod.lan\active\ops\nlib\NLI Reform Project\Place Names Linked Data Project\LGA\SA1_ACT_2016.shp'
+    myFile = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'test_data', 'ACT_SA1', 'SA1_ACT_2016.shp')
+    print('test file: {}'.format(myFile))
 
     # try with SA2
     #myFile = r'\\prod.lan\active\ops\nlib\NLI Reform Project\Place Names Linked Data Project\Meshblocks\1270055001_sa2_2016_aust_shape\SA2_2016_AUST.shp'
 
-    answer = get_matching_polygon('R7852608578', myFile, 'SA1_MAIN16')
+    answer = get_matching_polygon('R7852608578', myFile)
+    print(repr(answer))
     print('answer SA1 =', answer[1])
 
     print('finished')

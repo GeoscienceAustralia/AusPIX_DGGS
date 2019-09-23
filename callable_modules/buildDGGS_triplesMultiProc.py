@@ -14,8 +14,9 @@ centroids, area, top left , bottom right
 '''
 import time
 import numpy as np
-import point_DGGSvalue as d
+from callable_modules import point_DGGSvalue as d
 from multiprocessing import Pool
+import os
 
 #todays date
 from datetime import date
@@ -101,6 +102,8 @@ def calc_DGGS(coordsList):
 
 if __name__ == '__main__':
     # main
+    outputFile = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'RDF_files', 'ACT_DGGStriples_Multi.ttl')
+
     longStart = 148.75
     longEnd = 149.4
     latStart = -35.93
@@ -152,7 +155,7 @@ if __name__ == '__main__':
 
 
 #     # overwrites previous file unless you rename or move it
-    write_list_to_file(output, r'\\prod.lan\active\ops\nlib\NLI Reform Project\Place Names Linked Data Project\data\ACT_DGGStriples_Multi.ttl')
+    write_list_to_file(output, outputFile)
 #
 #
 #
