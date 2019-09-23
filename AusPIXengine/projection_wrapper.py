@@ -93,7 +93,7 @@ class Proj(object):
         if proj in HOMEMADE_PROJECTIONS:
             try:
                 # Import projection module for proj.
-                module = importlib.import_module('pj_rhealpix') # changed from ('rhealpix_dggs.pj_' + proj)
+                module = importlib.import_module('AusPIXengine.pj_' + proj)
                 f = getattr(module, proj)(a=a, e=e, **kwargs)
             except NameError:
                 print('Oops! Projection %s is not implemented.' % proj)
