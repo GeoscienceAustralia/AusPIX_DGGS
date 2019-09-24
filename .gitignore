@@ -111,5 +111,11 @@ venv.bak/
 .pydevproject
 .settings/
 
+# Mac
+.DS_Store
+
+# Jetbrains
+.idea/
+
 # Debug output
 *.log
