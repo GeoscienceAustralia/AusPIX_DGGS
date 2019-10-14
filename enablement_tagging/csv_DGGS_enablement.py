@@ -33,6 +33,8 @@ with open(myFile) as csvDataFile:
 
     for row in csvReader: # iterate through the rows one by one
         thisRow = []
+
+        # needs to be modified to point to the lat and long columns in the csv file - first column == 0
         # get the latitude and longitude for on the row - points need to be longitude first
         thisPoint = [float(row[2]), float(row[1])]   # converting string to float as well
 

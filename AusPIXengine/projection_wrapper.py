@@ -30,7 +30,7 @@ from AusPIXengine.ellipsoids import WGS84_ELLIPSOID
 # Homemade map projections, as opposed to those in the PROJ.4 library.
 # Remove 'healpix' and 'rhealpix' to use the PROJ.4 versions instead,
 # assuming you have the *correct/patched* PROJ.4 versions.
-HOMEMADE_PROJECTIONS = {'healpix', 'rhealpix', 'isea', 'csea', 'qsc'}
+HOMEMADE_PROJECTIONS = {'healpix', 'pj_rhealpix', 'isea', 'csea', 'qsc'}
     
 class Proj(object):
     r"""
@@ -93,7 +93,7 @@ class Proj(object):
         if proj in HOMEMADE_PROJECTIONS:
             try:
                 # Import projection module for proj.
-                module = importlib.import_module('AusPIXengine.pj_' + proj)
+                module = importlib.import_module('AusPIXengine' + proj)
                 f = getattr(module, proj)(a=a, e=e, **kwargs)
             except NameError:
                 print('Oops! Projection %s is not implemented.' % proj)

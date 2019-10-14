@@ -1,16 +1,24 @@
+'''
+this script converts a shapefile line feature set into DGGS equivalent
+- it reads the shapefile then works through line by line figuring out the DGGS cells along that line
+- duplicated DGGS cells are filtered out
+- output is as shapefile for visualiation and integration
+- could be adapted to also output csv table
+
+'''
+
 import shapefile  #to read and write shapefiles
-import dggs_in_poly  # this is script written by GA - see GitHub AusPix enablement folder
 from dggs import RHEALPixDGGS
 rdggs = RHEALPixDGGS() # make an instance
 
 # identify a shape file to get your lines from
-myFile = r'C:\Users\u82871\PycharmProjects\AusPIX_DGGS\test_data\testPoly\waterways_test.shp'
+myFile = r'C:\xxxxxxx\test_data\testPoly\waterways_test.shp'
 
-r = shapefile.Reader(myFile) # read in the file
+r = shapefile.Reader(myFile) # read in the shapefile file
 # get the attribute table records (combined with shapes) ie shapeRecords
 shapeRecs = r.shapeRecords()
 resolution = 10 # set resolution to be used
-doneDGGScells = [] #to accumlate list of completed cells
+doneDGGScells = [] #to accumlate a list of completed cells
 
 #set up shapefile for output
 w = shapefile.Writer(shapefile.POLYGON)  # in this case polygons == corners of cells
