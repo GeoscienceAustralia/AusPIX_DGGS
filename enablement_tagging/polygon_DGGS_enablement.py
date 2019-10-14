@@ -2,7 +2,7 @@
 this script uses the DGGS engine to calculate the DGGS cells within a polygon
 - it reads in a shapefile, but could be adapted to read in other spatial info - eg postGIS
 - outputs another shapefile for visualisation and integration
-- could also ve adapted to export as csv or triple etc
+- could also be adapted to export as csv or triple etc
 - depends on the 'dggs_in_poly' GA module which does much of the work - see AusPIX enablement folder Git
 
 Written by Joseph Bell at Geoscience Australia 2019
