@@ -181,17 +181,18 @@ def poly_to_DGGS_tool(myPoly, resolution):  # one poly and the attribute record 
 
                 #print('east', east)
                 #print()
+            
+            
+            #increaced indent for these blocks below (was only returning one cell)
+            mod = east % 2
+            if mod > 0:   inPoly = True
+            else:         inPoly = False
 
-        #print('east', east)
-        mod = east % 2
-        if mod > 0:   inPoly = True
-        else:         inPoly = False
 
+            # print('NEW POINT')
 
-        # print('NEW POINT')
-
-        if inPoly:
-            insidePoly.append(myPoint)
+            if inPoly:
+                insidePoly.append(myPoint)
 
     print('cells in bbox = ', len(bboxCentroids))
     print('cells inside poly ', len(insidePoly))  # print the number found
