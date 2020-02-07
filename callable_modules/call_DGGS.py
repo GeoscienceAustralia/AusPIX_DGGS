@@ -6,14 +6,14 @@ It will calculate the DGGS cells and return them to the code.
 This example is based on ABS Local Government Areas shapefile.
 ESRI not required but it can read the shapefile outputs
 
-Joseph Bell Geoscience Australia
+Joseph Bell GeoScience Australia
 
 '''
 
 
 from AusPIXengine.dggs import RHEALPixDGGS
 
-from shapely.geometry import shape, Point, Polygon  # used in the function below
+from shapely.geometry import shape, Point, Polygon  # used in the function below ??
 # import csv
 
 
@@ -83,7 +83,8 @@ def poly_to_DGGS_tool(myPoly, thisRecord, resolution):  # one poly and the attri
 
     # print(firstShape.points)
     # #######  we are using Shapely to find cells inside the poly. Shapely is good for this.
-    # I don't think shapely can import of export any shapefiles, but you can make a list of points that
+    # shapely was having trouble with polygons with holes, and in other scripts it has been replaced by hand written code
+    # I don't think shapely can import or export any shapefiles, but you can make a list of points that
     # define the shape and give it to shapely
     thisShp = myPoly.points  # this gives a list of points the function input poly has in it
     # now convert to a shapely Polygon
@@ -114,4 +115,6 @@ if __name__ == '__main__':
     pass
 
 print('')
+
+
 
