@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-r"""
+"""
 This Python 3.3 module implements the rHEALPix map projection.
 CHANGELOG:
 - Alexander Raichev (AR), 2013-01-26: Refactored code from release 0.3.
@@ -20,8 +20,8 @@ By 'ellipsoid' below, i mean an oblate ellipsoid of revolution.
 # Import third-party modules.
 from numpy import pi, sign, array, identity, dot, deg2rad, rad2deg 
 # Import my modules.
-from AusPIXengine.pj_healpix import healpix_sphere, healpix_sphere_inverse, healpix_ellipsoid, healpix_ellipsoid_inverse
-from AusPIXengine.utils import my_round, auth_rad
+from pj_healpix import healpix_sphere, healpix_sphere_inverse, healpix_ellipsoid, healpix_ellipsoid_inverse
+from utils import my_round, auth_rad
 
 # Matrix for anticlockwise rotation by pi/2: 
 ROTATE1 = array([[0, -1], [1, 0]])
@@ -477,6 +477,7 @@ def rhealpix_diagram(a=1, e=0, north_square=0, south_square=0,
     Inessential graphics method.
     Requires Sage graphics methods.
     """
+    # normally don't use sage - we normally push data back to a shapefile for visualisation
     from sage.all import Graphics, line2d, point, polygon, text, RealNumber, Integer
     # Make Sage types compatible with Numpy.
     RealNumber = float
