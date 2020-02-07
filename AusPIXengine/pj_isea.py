@@ -5,7 +5,7 @@ Created on Mon Oct 15 14:57:52 2018
 @author: Joseph
 """
 
-r"""
+"""
 This Python 3.3 module implements the icosohedral Snyder equal area map projection (ISEA) for ellipsoids of revolution by using the spherical version of the projection (from the PROJ.4 library) on the ellipsoid's authalic sphere.
 CHANGELOG:
 - Alexander Raichev (AR), 2012-01-25: Initial version.
