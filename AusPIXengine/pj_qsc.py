@@ -5,7 +5,7 @@ Created on Mon Oct 15 15:00:27 2018
 @author: Joseph
 """
 
-r"""
+"""
 This Python 3.3 module implements the quadrilateralized spherical cube (QSC) map projection as described in [CaGr2002]_.
 .. [CaGr2002] M. R. Calabretta and E. W. Greisen, Representations of celestial coordinates in FITS, Astronomy & Astrophysics 395 (2002), 1077--1122.
 CHANGELOG:
