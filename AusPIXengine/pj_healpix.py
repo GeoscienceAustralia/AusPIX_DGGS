@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-r"""
+"""
 This Python 3.3 module implements the HEALPix map projection as described in [CaRo2007]_.
 .. [CaRo2007] Mark R. Calabretta and Boudewijn F. Roukema, Mapping on the healpix grid, Monthly Notices of the Royal Astronomical Society 381 (2007), no. 2, 865--872.
 CHANGELOG:
@@ -22,7 +22,7 @@ By 'ellipsoid' below, i mean an oblate ellipsoid of revolution.
 # Import third-party modules.
 from numpy import pi, floor, sqrt, sin, arcsin, sign, array, deg2rad, rad2deg
 # Import my modules.
-from AusPIXengine.utils import my_round, auth_lat, auth_rad
+from utils import my_round, auth_lat, auth_rad
 
 def healpix_sphere(lam, phi):
     r"""
