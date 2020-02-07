@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-r"""
+"""
 This Python 3.3 module implements the cubic Snyder equal area map projection (CSEA) as described in [Snyd1992]_.
 .. [Snyd1992] J. P. Snyder, An equal-area map projection for polyhedral globes, Cartographica 29 (1992), 10--21.
 CHANGELOG:
