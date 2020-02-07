@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-r"""
+"""
 This Python 3.3 module computes linear and areal distortion statistics of 
 map projections.
 It is used for analysis only and so is not essential to manipulating 
