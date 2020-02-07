@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-r"""
+"""
 This Python 3.3 module implements the rHEALPix discrete global grid system.
 CHANGELOG:
 - Alexander Raichev (AR), 2012-11-12: Initial version based upon grids.py.
