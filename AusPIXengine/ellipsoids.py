@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-r"""
+"""
 This Python 3.3 code implements ellipsoids of revolution.
 CHANGELOG:
 - Alexander Raichev (AR), 2012-01-26: Refactored code from release 0.3.
