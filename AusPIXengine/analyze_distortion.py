@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
-
-r"""
+"""
 This Python 3.3 module analyzes angular, linear, and areal distortion of various map projections.
 CHANGELOG:
 - Alexander Raichev (AR), 2013-02-04: Initial version.
