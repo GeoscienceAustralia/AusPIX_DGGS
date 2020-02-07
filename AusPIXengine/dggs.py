@@ -133,10 +133,10 @@ from random import uniform, randint
 from colorsys import hsv_to_rgb
 
 # Import my modules.
-import AusPIXengine.pj_rhealpix as pjr
-import AusPIXengine.projection_wrapper as pw
-from AusPIXengine.ellipsoids import WGS84_ELLIPSOID, WGS84_ELLIPSOID_RADIANS, UNIT_SPHERE, UNIT_SPHERE_RADIANS
-from AusPIXengine.utils import my_round
+import pj_rhealpix as pjr
+import projection_wrapper as pw
+from ellipsoids import WGS84_ELLIPSOID, WGS84_ELLIPSOID_RADIANS, UNIT_SPHERE, UNIT_SPHERE_RADIANS
+from utils import my_round
     
 class RHEALPixDGGS(object):
     r"""
@@ -989,8 +989,7 @@ class RHEALPixDGGS(object):
         planar DGGS) and sort the sublists from top to bottom.
         
         If `plane` = False, then return a list of lists of resolution 
-        `resolution` 
-        cells that cover the longitude-latitude aligned ellipsoidal quadrangle  
+        `resolution` cells that cover the longitude-latitude aligned ellipsoidal quadrangle
         whose northwest and southeast vertices are the points `ul` and `dr`, 
         respectively. Defunct quads with `ul` = (stuff, pi/2) or 
         `dr` = (stuff, -pi/2) also work 
@@ -1053,7 +1052,7 @@ class RHEALPixDGGS(object):
             ['S4']
         """
         if ul[0] > dr[0] or ul[1] < dr[1]:
-            return []
+                return []
         if plane:
             # Rectangle region.
             # Get the four corner cells.
@@ -2692,4 +2691,6 @@ class Cell(object):
              #             for i in range(resolution)])/\
              #        float(6*N**(2*resolution))
         return hsv_to_rgb(hue, saturation, 1)
+
+
 
