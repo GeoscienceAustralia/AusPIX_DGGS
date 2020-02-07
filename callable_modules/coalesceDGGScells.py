@@ -7,9 +7,9 @@ This reduces the number of cell references but can complicate comparison based o
 At this stage run the modules a few times until the same number of cells is returned.
 Later will be improved using a recursive method.
 
-
 Joseph Bell Geoscience Australia
-
+Another way to do this is the top down approach - use big cells first and fill in remainder with smaller cells
+might be quicker and more recursive
 '''
 
 
@@ -44,9 +44,6 @@ def coalesce(dggs):  # recieves a list of dggs cell names inside a poly
         else:  # not 9 children
             if aCell not in newDGGSrow:
                 newDGGSrow.append(aCell)  # add the child cell (item)
-
-
-
 
     # for item in newDGGSrow:
     #     print(item)
