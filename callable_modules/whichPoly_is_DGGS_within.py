@@ -21,12 +21,11 @@ import shapefile
 import os
 
 from callable_modules import call_DGGS  # returns the DGGS cells for a shapefile poly
+# or use dggs_in_poly.py module
 
 from shapely.geometry import shape, Point, Polygon  # used in the function below
+
 import csv
-
-
-
 
 # make an dggs instance
 rdggs = RHEALPixDGGS()
@@ -66,8 +65,6 @@ def get_matching_polygon( rHealpix_cell, shapeFile_path):
     print('nucleus', nucleus[0], nucleus[1])  #nucleus seems to be in metres - need it in Lat Long
     print('centroid', centroid[0], centroid[1])
     dggsPoint = Point(centroid[0], centroid[1])
-
-
 
     #findout which poly the centroid is in
     # use shapely
