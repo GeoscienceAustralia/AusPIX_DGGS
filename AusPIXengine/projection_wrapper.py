@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-r"""
+"""
 This Python 3.3 module implements a wrapper for map projections.
 CHANGELOG:
 - Alexander Raichev (AR), 2013-01-25: Refactored code from release 0.3.
@@ -30,37 +30,37 @@ from AusPIXengine.ellipsoids import WGS84_ELLIPSOID
 # Homemade map projections, as opposed to those in the PROJ.4 library.
 # Remove 'healpix' and 'rhealpix' to use the PROJ.4 versions instead,
 # assuming you have the *correct/patched* PROJ.4 versions.
-HOMEMADE_PROJECTIONS = {'healpix', 'rhealpix', 'isea', 'csea', 'qsc'}
-    
+HOMEMADE_PROJECTIONS = {'healpix', 'pj_rhealpix', 'isea', 'csea', 'qsc'}
+
 class Proj(object):
     r"""
     Represents a map projection of a given ellipsoid.
-    
+
     INSTANCE ATTRIBUTES:
-    
+
     - `ellipsoid` - An ellipsoid (Ellipsoid instance) to project.
-    - `proj` - The name (string) of the map projection, either a valid PROJ.4 
+    - `proj` - The name (string) of the map projection, either a valid PROJ.4
       projection name or a valid homemade projection name.
-    - `kwargs` - Keyword arguments (dictionary) needed for the projection's 
-      definition, but not for the definition of the ellipsoid.  For example, 
-      these could be {'north_square':1, 'south_square': 2} for the rhealpix 
-      projection. 
-    
+    - `kwargs` - Keyword arguments (dictionary) needed for the projection's
+      definition, but not for the definition of the ellipsoid.  For example,
+      these could be {'north_square':1, 'south_square': 2} for the rhealpix
+      projection.
+
     EXAMPLES::
-        >>> from rhealpix_dggs.ellipsoids import WGS84_ELLIPSOID    
+        >>> from rhealpix_dggs.ellipsoids import WGS84_ELLIPSOID
         >>> f = Proj(ellipsoid=WGS84_ELLIPSOID, proj='rhealpix', north_square=1, south_square=0)
         >>> print(my_round(f(0, 30), 15))
         (0.0, 3748655.1150495014)
         >>> f = Proj(ellipsoid=WGS84_ELLIPSOID, proj='cea')
         >>> print(my_round(f(0, 30), 15))
         (0.0, 3180183.485774971)
-        
+
     NOTES:
-    
+
     When accessing a homemade map projection assume that it can be called via
-    a function g(a, e), where a is the major radius of the ellipsoid to be 
+    a function g(a, e), where a is the major radius of the ellipsoid to be
     projected and e is its eccentricity.
-    The output of g should be a function object of the form 
+    The output of g should be a function object of the form
     f(u, v, radians=False, inverse=False).
     For example, see the healpix() function in ``pj_healpix.py``.
     """
@@ -69,9 +69,9 @@ class Proj(object):
         # Keyword arguments related to the projection but not to its
         # underlying ellipsoid, e.g. for rhealpix these could be
         # {'north_square':1, 'south_square': 2}:
-        self.kwargs = kwargs 
+        self.kwargs = kwargs
         self.ellipsoid = ellipsoid
-        
+
     def __str__(self):
         result = ['map projection:']
         result.append('    proj = %s' % self.proj)
@@ -79,8 +79,8 @@ class Proj(object):
         result.append('    ellipsoid:')
         for (k, v) in sorted(self.ellipsoid.__dict__.items()):
             result.append(' '*8 + k + ' = ' + str(v))
-        return "\n".join(result)        
-    
+        return "\n".join(result)
+
     def __call__(self, u, v, inverse=False):
         ellipsoid = self.ellipsoid
         proj = self.proj
@@ -91,10 +91,15 @@ class Proj(object):
         a = ellipsoid.a
         e = ellipsoid.e
         if proj in HOMEMADE_PROJECTIONS:
+            #print('proj=', proj)
             try:
                 # Import projection module for proj.
-                module = importlib.import_module('AusPIXengine.pj_' + proj)
+                module = importlib.import_module('AusPIXengine.' + proj)
+                #print('module=', module)
+                proj = proj.replace('pj_','')
+                #print('proj2', proj)
                 f = getattr(module, proj)(a=a, e=e, **kwargs)
+                #print('f=', f)
             except NameError:
                 print('Oops! Projection %s is not implemented.' % proj)
                 return
@@ -107,7 +112,7 @@ class Proj(object):
             lam = wrap_longitude(u - lon_0, radians=radians)
             phi = wrap_latitude(v - lat_0, radians=radians)
             return f(lam, phi, radians=radians)
-        else:    
+        else:
             lam, phi = f(u, v, radians=radians, inverse=True)
             # Translate longitudes and latitudes so that 
             # (0, 0) in the plane maps to (lon_0, lat_0) on the ellipsoid.
