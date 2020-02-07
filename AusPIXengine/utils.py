@@ -1,4 +1,4 @@
-r"""
+"""
 This Python 3.3 module implements several helper functions for coding map projections.
 CHANGELOG:
 - Alexander Raichev (AR), 2012-01-26: Refactored code from release 0.3.
