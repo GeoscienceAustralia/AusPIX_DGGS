@@ -2,6 +2,8 @@
 '''
 python script designed to find all the level 10 AusPIX cells for bushfire polygon areas
 Joseph Bell Geoscience Australia Jan 2020
+input files should be WGS84
+output will be WGS84 too
 '''
 
 import shapefile  #to read and write shapefiles
@@ -10,9 +12,7 @@ from dggs import RHEALPixDGGS
 rdggs = RHEALPixDGGS() # make an instance
 
 # identify path to a shape file to get your polygons from
-myFile = r'C:\DEA\TasmanaiaFix\BurnAreas10thJan.shp'
-
-#myFile = r'C:\DEA\Fires\Burnt\Boundaries15-01-2020\Test_one02shp.shp'
+myFile = r'xxxxxxxxxxxx\BurnAreas10thJan.shp'  # many polygons in a shapefile
 
 r = shapefile.Reader(myFile) # read in the file
 # get the attribute table records (combined with shapes) ie shapeRecords
@@ -22,10 +22,10 @@ resArea = (rdggs.cell_area(resolution, plane=False))/10000
 #print('Area in ha', resArea)
 
 #set up shapefile for output
-#w = shapefile.Writer(shapefile.POINT)  # in this case points == centroids of cells
-thisShapeFile = r'C:\temp\BurntAreasDGGS'  # don't add .shp
+#w = shapefile.Writer(shapefile.POINT)  # in this case points == centroids of cells   #older version of shapefile
+thisShapeFile = r'C:\temp\BurntAreasDGGS'  # don't add .shp  
 
-w= shapefile.Writer(thisShapeFile)
+w= shapefile.Writer(thisShapeFile)     # for newer verion of shapefile
 w.field('DGGSrHEALPix', 'C', '20')
 w.field('uri', 'C', '150')  #using 'C' = character = ensures the correct number
 w.field('DGGS_ha', 'C', '20')
