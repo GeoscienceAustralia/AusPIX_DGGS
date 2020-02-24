@@ -1,9 +1,8 @@
 
 '''
 python script designed to find all the level 10 AusPIX cells for bushfire polygon areas
+once complete, these cells are attributed with SA1, LGA, DEM, CAPAD, etc
 Joseph Bell Geoscience Australia Jan 2020
-input files should be WGS84
-output will be WGS84 too
 '''
 
 import shapefile  #to read and write shapefiles
@@ -12,7 +11,9 @@ from dggs import RHEALPixDGGS
 rdggs = RHEALPixDGGS() # make an instance
 
 # identify path to a shape file to get your polygons from
-myFile = r'xxxxxxxxxxxx\BurnAreas10thJan.shp'  # many polygons in a shapefile
+myFile = r'xxxxxBurnAreas10thJan.shp'
+
+#myFile = r'C:xxxxxFires\Burnt\Boundaries15-01-2020\Test_one02shp.shp'
 
 r = shapefile.Reader(myFile) # read in the file
 # get the attribute table records (combined with shapes) ie shapeRecords
@@ -22,22 +23,22 @@ resArea = (rdggs.cell_area(resolution, plane=False))/10000
 #print('Area in ha', resArea)
 
 #set up shapefile for output
-#w = shapefile.Writer(shapefile.POINT)  # in this case points == centroids of cells   #older version of shapefile
-thisShapeFile = r'C:\temp\BurntAreasDGGS'  # don't add .shp  
+#w = shapefile.Writer(shapefile.POINT)  # in this case points == centroids of cells   #old version of shapefile
+thisShapeFile = r'C:\temp\BurntAreasDGGS'  # don't add .shp
 
-w= shapefile.Writer(thisShapeFile)     # for newer verion of shapefile
+w= shapefile.Writer(thisShapeFile)
 w.field('DGGSrHEALPix', 'C', '20')
 w.field('uri', 'C', '150')  #using 'C' = character = ensures the correct number
 w.field('DGGS_ha', 'C', '20')
 w.field('Status', 'C', '20')
 
 n=0
-missed = 0
-# now line by line through the attribute table of the source shapefile
+
+# now go line by line through the attribute table of the source shapefile
 for row in shapeRecs:
 
         n+= 1
-        print('doing', n, 'of 2,146')
+        print('doing', n, 'of' len(shapeRecs')
         polyShape = row.shape  # get the spatial component
         polyRecord = row.record  # get the attributes record (row)
         # call the "poly_to_DGGS_tool" function to return all the DGGS cells (within each polygon) includes long & lat
@@ -64,5 +65,3 @@ prj = open("%s.prj" % thisShapeFile, "w")
 epsg = 'GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563]],PRIMEM["Greenwich",0],UNIT["degree",0.0174532925199433]]'
 prj.write(epsg)
 prj.close()
-
-

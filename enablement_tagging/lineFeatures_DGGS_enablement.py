@@ -1,8 +1,10 @@
 '''
 this script converts a shapefile line feature set into DGGS equivalent
 - it reads the shapefile then works through line by line figuring out the DGGS cells along that line
-- duplicated DGGS cells are filtered out
-- output is as shapefile for visualiation and integration
+- the script calls the points that make up the line, then calculates the DGGS cells for those points
+- if the line has sparse points along it, the user may need to 'densify' first
+- any duplicated DGGS cells are filtered out
+- output is as shapefile for visualiation and integration - note python 2 and python 3 versions of shapefile differ
 - could be adapted to also output csv table
 
 '''
@@ -21,7 +23,7 @@ resolution = 10 # set resolution to be used
 doneDGGScells = [] #to accumlate a list of completed cells
 
 #set up shapefile for output
-w = shapefile.Writer(shapefile.POLYGON)  # in this case polygons == corners of cells
+w = shapefile.Writer(shapefile.POLYGON)  # in this case polygons == corners of cells - this is the older verion method
 w.field('DGGSrHEALPix', 'C', '20')
 w.field('DGGS_reso', 'C', '20')
 w.field('thisName', 'C', '20')
