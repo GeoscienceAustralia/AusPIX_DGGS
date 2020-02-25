@@ -8,7 +8,7 @@ Created on 1st March 2019
 '''
 small module to find the DGGS cell for a point (long, lat) WGS84
 '''
-from AusPIXengine.dggs import RHEALPixDGGS
+from ..auspixengine.dggs import RHEALPixDGGS
 rdggs = RHEALPixDGGS()
 
 def latlong_to_DGGS(coords, resolution):

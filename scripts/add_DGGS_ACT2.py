@@ -23,10 +23,10 @@ f = r'\\xxxxxxxx\ACT_grid\ACT_Points.csv'
 output = list()
 
 import csv
-from dggs import RHEALPixDGGS
+from auspixdggs.auspixengine.dggs import RHEALPixDGGS
 
 import math
-from utils import my_round
+from auspixdggs.auspixengine.utils import my_round
 
 # make an instance
 rdggs = RHEALPixDGGS()

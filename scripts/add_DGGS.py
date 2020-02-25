@@ -24,7 +24,7 @@ output = list()
 PYTHONPATH = r'\\prod.lan\active\ops\nlib\NLI Reform Project\Place Names Linked Data Project\AusPIX_DGGS\AusPIXengine/'
 
 import csv
-from dggs import RHEALPixDGGS
+from auspixdggs.auspixengine.dggs import RHEALPixDGGS
 
 import math
 

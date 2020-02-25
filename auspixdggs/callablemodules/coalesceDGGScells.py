@@ -13,7 +13,7 @@ might be quicker and more recursive
 '''
 
 
-from AusPIXengine.dggs import RHEALPixDGGS
+from ..auspixengine.dggs import RHEALPixDGGS
 
 
 # make an instance
