@@ -10,7 +10,7 @@ this script converts a shapefile line feature set into DGGS equivalent
 '''
 
 import shapefile  #to read and write shapefiles
-from dggs import RHEALPixDGGS
+from auspixdggs.auspixengine.dggs import RHEALPixDGGS
 rdggs = RHEALPixDGGS() # make an instance
 
 # identify a shape file to get your lines from

@@ -11,10 +11,10 @@ Joseph Bell Geoscience Australia
 '''
 
 
-from dggs import RHEALPixDGGS
-from dggs import Cell
+from auspixdggs.auspixengine.dggs import RHEALPixDGGS
+from auspixdggs.auspixengine.dggs import Cell
 import shapefile
-import call_DGGS  # returns the DGGS cells for a shapefile poly
+import auspixdggs.callablemodules.call_DGGS  # returns the DGGS cells for a shapefile poly
 
 from shapely.geometry import shape, Point, Polygon  # used in the function below
 import csv

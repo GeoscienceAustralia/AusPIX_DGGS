@@ -9,8 +9,8 @@ Written by Joseph Bell at Geoscience Australia 2019
 '''
 
 import shapefile  #to read and write shapefiles
-import dggs_in_poly  # this is script written by GA - see GitHub AusPix DGGS enablement folder
-from dggs import RHEALPixDGGS
+import auspixdggs.callablemodules.dggs_in_poly  # this is script written by GA - see GitHub AusPix DGGS enablement folder
+from auspixdggs.auspixengine.dggs import RHEALPixDGGS
 rdggs = RHEALPixDGGS() # make an instance
 
 # identify a shape file to get your polygons from

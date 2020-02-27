@@ -15,12 +15,12 @@ to return the polygon it's centroid is inside
 Joseph Bell Geoscience Australia
 
 '''
-from AusPIXengine.dggs import RHEALPixDGGS
-from AusPIXengine.dggs import Cell
+from ..auspixengine.dggs import RHEALPixDGGS
+from ..auspixengine.dggs import Cell
 import shapefile
 import os
 
-from callable_modules import call_DGGS  # returns the DGGS cells for a shapefile poly
+from . import call_DGGS  # returns the DGGS cells for a shapefile poly
 # or use dggs_in_poly.py module
 
 from shapely.geometry import shape, Point, Polygon  # used in the function below

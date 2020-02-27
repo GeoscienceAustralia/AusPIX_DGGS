@@ -1,7 +1,7 @@
 ''' this script DGGS enables a csv point file
 written by Joseph Bell October 2019'''
 import csv # import csv reader
-from dggs import RHEALPixDGGS  # import the DGGS
+from auspixdggs.auspixengine.dggs import RHEALPixDGGS  # import the DGGS
 rdggs = RHEALPixDGGS()  # make an instance of dggs
 
 # point to the CSV file

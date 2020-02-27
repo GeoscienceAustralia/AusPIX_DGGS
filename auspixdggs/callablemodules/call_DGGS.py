@@ -11,7 +11,7 @@ Joseph Bell GeoScience Australia
 '''
 
 
-from AusPIXengine.dggs import RHEALPixDGGS
+from ..auspixengine.dggs import RHEALPixDGGS
 
 from shapely.geometry import shape, Point, Polygon  # used in the function below ??
 # import csv

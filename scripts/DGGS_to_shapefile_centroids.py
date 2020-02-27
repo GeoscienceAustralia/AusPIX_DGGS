@@ -13,9 +13,9 @@ Joseph Bell Geoscience Australia
 import shapefile
 import csv
 #import dggs
-from dggs import RHEALPixDGGS
-from dggs import Cell
-import ellipsoids
+from auspixdggs.auspixengine.dggs import RHEALPixDGGS
+from auspixdggs.auspixengine.dggs import Cell
+import auspixdggs.auspixengine.ellipsoids as ellipsoids
 E = ellipsoids.WGS84_ELLIPSOID_DEG
 rdggs = RHEALPixDGGS(ellipsoid=E, north_square=1, south_square=2, N_side=3)
 

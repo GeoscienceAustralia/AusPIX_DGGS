@@ -14,7 +14,7 @@ centroids, area, top left , bottom right
 '''
 import time
 import numpy as np
-from callable_modules import point_DGGSvalue as d
+from . import point_DGGSvalue as d
 from multiprocessing import Pool
 import os
 

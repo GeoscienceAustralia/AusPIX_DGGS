@@ -10,7 +10,7 @@ small module to find the DGGS cell for a point (long, lat) WGS84
 The point will be anywhere in the cell returned.
 
 '''
-from AusPIXengine.dggs import RHEALPixDGGS
+from auspixdggs.auspixengine.dggs import RHEALPixDGGS
 rdggs = RHEALPixDGGS()
 
 def latlong_to_DGGS(coords, resolution):

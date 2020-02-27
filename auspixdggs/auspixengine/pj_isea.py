@@ -26,7 +26,7 @@ By 'ellipsoid' below, i mean an oblate ellipsoid of revolution.
 import pyproj
 from numpy import rad2deg, deg2rad, array, pi
 # Import my modules.
-from AusPIXengine.utils import my_round, auth_lat, auth_rad
+from .utils import my_round, auth_lat, auth_rad
 
 
 def isea_sphere(lam, phi):
