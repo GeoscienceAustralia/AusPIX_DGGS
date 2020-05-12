@@ -22,7 +22,7 @@ By 'ellipsoid' below, i mean an oblate ellipsoid of revolution.
 # Import third-party modules.
 from numpy import pi, rad2deg, deg2rad, floor, sin, cos, arccos, arctan, arctan2, sqrt, array
 # Import my modules.
-from AusPIXengine.utils import auth_lat, auth_rad
+from .utils import auth_lat, auth_rad
 
 g = arctan(sqrt(2)) # Snyder approximates this as 54.73561032 degrees.
 tang = sqrt(2)

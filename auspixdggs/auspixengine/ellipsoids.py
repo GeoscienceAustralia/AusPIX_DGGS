@@ -24,7 +24,7 @@ from numpy import pi, sqrt, sin, cos, arcsin, arctanh, deg2rad, rad2deg
 # Import standard modules.
 from random import uniform
 # Import my modules.
-from AusPIXengine.utils import my_round, auth_lat, auth_rad                        
+from .utils import my_round, auth_lat, auth_rad                        
 
 # Parameters of some common ellipsoids.
 WGS84_A = 6378137.0
