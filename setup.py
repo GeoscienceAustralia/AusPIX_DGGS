@@ -8,5 +8,5 @@ setup(
     author_email='Joseph.Bell@ga.gov.au',
     description='This is the base python DGGS engine for the AusPIX developmental DGGS by Geoscience Australia.',
     packages=find_packages(),    
-    install_requires=['numpy', 'pyproj', 'scipy', 'shapely'],
+    install_requires=['numpy', 'pyproj', 'scipy', 'shapely', 'pyshp'],
 )
