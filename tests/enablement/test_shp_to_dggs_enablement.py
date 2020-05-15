@@ -25,7 +25,7 @@ import pytest
 from auspixdggs.auspixengine.dggs import RHEALPixDGGS
 from auspixdggs.auspixengine.dggs import Cell
 import auspixdggs.callablemodules.call_DGGS as call_DGGS
-import shapefile
+import auspixdggs.utils.shapefile as shapefile
 
 import auspixdggs.callablemodules.call_DGGS  # returns the DGGS cells for a shapefile poly
 
@@ -167,7 +167,7 @@ def test_ABS_SA1_to_DGGS():
     """Test integrity of ABS SA1 2016 SHP enablement to DGGS
     """
     validFlag = False
-    dataList = get_data_list('../test_data/ACT_SA1/SA1_ACT_2016.shp')
+    dataList = get_data_list('test_data/ACT_SA1/SA1_ACT_2016.shp')
     for item in dataList:
         if 'R7852335255' in item[4]:
             print('found R7852335255')
