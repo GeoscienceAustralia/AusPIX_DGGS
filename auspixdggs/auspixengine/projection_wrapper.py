@@ -94,7 +94,8 @@ class Proj(object):
             #print('proj=', proj)
             try:
                 # Import projection module for proj.
-                module = importlib.import_module('AusPIXengine.' + proj)
+                print('auspixengine.' + proj)
+                module = importlib.import_module('auspixdggs.auspixengine.' + proj)
                 #print('module=', module)
                 proj = proj.replace('pj_','')
                 #print('proj2', proj)

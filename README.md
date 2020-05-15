@@ -14,7 +14,12 @@ or for development
 or   
 `pip install -e .`
 
+## Running tests
 
+``` 
+$ pip install pytests
+$ python -m pytests tests/
+```
 
 ![rhealpix](https://user-images.githubusercontent.com/23160509/53066271-23aa4680-3523-11e9-8e6c-2f042f9befbf.png)
 Figure 1: World Grid layout:
