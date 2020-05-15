@@ -24,8 +24,8 @@ import pytest
 
 from auspixdggs.auspixengine.dggs import RHEALPixDGGS
 from auspixdggs.auspixengine.dggs import Cell
-import auspixdggs.callablemodules.call_DGGS as call_DGGS
-import auspixdggs.utils.shapefile as shapefile
+from auspixdggs.callablemodules import call_DGGS
+from auspixdggs.utils import shapefile
 
 import auspixdggs.callablemodules.call_DGGS  # returns the DGGS cells for a shapefile poly
 

@@ -22,7 +22,7 @@ Joseph Bell Geoscience Australia
 from auspixdggs.auspixengine.dggs import RHEALPixDGGS
 from auspixdggs.auspixengine.dggs import Cell
 import auspixdggs.callablemodules.call_DGGS as call_DGGS
-import shapefile
+from auspixdggs.utils import shapefile
 
 import auspixdggs.callablemodules.call_DGGS  # returns the DGGS cells for a shapefile poly
 
