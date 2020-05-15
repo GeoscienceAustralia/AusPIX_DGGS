@@ -21,6 +21,7 @@ Joseph Bell Geoscience Australia
 
 from auspixdggs.auspixengine.dggs import RHEALPixDGGS
 from auspixdggs.auspixengine.dggs import Cell
+import auspixdggs.callablemodules.call_DGGS as call_DGGS
 import shapefile
 
 import auspixdggs.callablemodules.call_DGGS  # returns the DGGS cells for a shapefile poly
@@ -48,7 +49,8 @@ rdggs = RHEALPixDGGS()
 
 # open a shape file to get your polygons from
 #myFile = r'\\prod.lan\active\ops\nlib\NLI Reform Project\Place Names Linked Data Project\Meshblocks\1270055001_sa1_2016_aust_shape\SA1_2016_AUST.shp'
-myFile = r'\\prod.lan\active\ops\nlib\NLI Reform Project\Place Names Linked Data Project\LGA\SA1_ACT_2016.shp'
+#myFile = r'\\prod.lan\active\ops\nlib\NLI Reform Project\Place Names Linked Data Project\LGA\SA1_ACT_2016.shp'
+myFile = '../test_data/ACT_SA1/SA1_ACT_2016.shp'
 
 #SA1's can be downloaded from ABS?
 
