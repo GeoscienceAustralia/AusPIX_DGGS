@@ -84,7 +84,8 @@ def test_VIC_SA1_Melbourne_CBD_multiple_to_DGGS():
     print(list_cells)
     assert set(test_dggs_lvl10_cells).issubset(set(list_cells)) == True       
 
-
+#disabling this test as the bbox is quite large and test runs slow
+#def test_SA1_flinders_Cape_Barren_multipoly_to_DGGS():
 def try_SA1_flinders_Cape_Barren_multipoly_to_DGGS():
     # read in the file
     geojson = get_geojson('test_data/ABS_SA1_Flinders_Cape_Barren_Islands_multipoly.geojson')
