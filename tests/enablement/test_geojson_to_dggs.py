@@ -46,6 +46,21 @@ def test_ABS_SA1_black_mountain_geojson_to_DGGS():
 
         assert set(test_dggs_lvl10_cells).issubset(set(cells)) == True
 
+
+def test_NSW_SA1_sydney_haymarket_geojson_to_DGGS():
+    # read in the file
+    geojson = get_geojson('test_data/NSW_SA1_Sydney_Haymarket.geojson')
+
+    for fea in geojson['features']:  # for feature in attribute table        
+        polygon = geojson_to_shape(fea['geometry'])
+        thisbbox = bbox(list(coords(fea)))
+        cells = poly_to_DGGS_tool(polygon, '', 10, input_bbox=thisbbox)  # start at DGGS level 10
+        test_dggs_lvl10_cells = ['R8607065772', 'R8607068112']
+        for item in cells:
+             print(item)
+        assert set(test_dggs_lvl10_cells).issubset(set(cells)) == True       
+
+
 if __name__ == "__main__":
     #test_ABS_SA1_shp_to_DGGS()
     test_ABS_SA1_black_mountain_geojson_to_DGGS()
