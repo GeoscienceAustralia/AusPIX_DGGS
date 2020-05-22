@@ -8,8 +8,6 @@ from geojson.utils import coords
 from shapely.geometry import Polygon, shape
 
 
-def get_shp(fname):
-    return shapefile.Reader(fname)
 
 def get_geojson(fname):
     data = None
@@ -21,18 +19,6 @@ def geojson_to_shape(g):
     return shape(g)
     
 
-def test_ABS_SA1_shp_to_DGGS():
-    """Test integrity of ABS SA1 2016 SHP SA1 Black Mountain feature enablement to DGGS
-    """
-    validFlag = False
-    shape = get_shp('test_data/ACT_SA1_Black_Mountain.shp')
-    feature = shape.shapeRecords()[0]
-    first = feature.shape.__geo_interface__  
-
-    print(first)
-    cells = poly_to_DGGS_tool(feature, '', 10)  # start at DGGS level 10
-    for item in cells:
-        print(item)
 
 def bbox(coord_list):
      box = []
