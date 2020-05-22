@@ -24,15 +24,20 @@ rdggs = RHEALPixDGGS()
 # mypoly is the shape of the polygon, firstRecord is the first record in attribute table
 # resolution is the DGGS resolution required
 
-def poly_to_DGGS_tool(myPoly, thisRecord, resolution):  # one poly and the attribute record for it
+def poly_to_DGGS_tool(myPoly, thisRecord, resolution, input_bbox=None):  # one poly and the attribute record for it
     print()
     print()
     # get some info out of the first record
     print('call record', thisRecord)
 
     # find the bounding bow of the polygon
-    bbox = myPoly.bbox
-    # print(bbox)
+    if hasattr(myPoly, 'bbox'):
+        bbox = myPoly.bbox
+        print(bbox)
+    else:
+        #expect it as a param
+        bbox = input_bbox
+        print(bbox)
     # [141.3928220030001, -32.01914569999997, 141.5659850120001, -31.883788544999966]
 
     # now make DGGS points inside the poly based on our desired resolution
@@ -86,10 +91,13 @@ def poly_to_DGGS_tool(myPoly, thisRecord, resolution):  # one poly and the attri
     # shapely was having trouble with polygons with holes, and in other scripts it has been replaced by hand written code
     # I don't think shapely can import or export any shapefiles, but you can make a list of points that
     # define the shape and give it to shapely
-    thisShp = myPoly.points  # this gives a list of points the function input poly has in it
-    # now convert to a shapely Polygon
-    thisPoly = Polygon(thisShp)  # thisPoly is the Shapely version of the poly
-
+    if hasattr(myPoly, 'points'):
+        thisShp = myPoly.points  # this gives a list of points the function input poly has in it
+        # now convert to a shapely Polygon
+        thisPoly = Polygon(thisShp)  # thisPoly is the Shapely version of the poly
+    else:
+        #assume this polygon is fine
+        thisPoly = myPoly
     insidePoly = list()  # declare a new empty list
     # go through the list of DGGS centroids and discover which are 'within' the poly
     for item in bboxCentroids:
