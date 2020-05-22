@@ -84,7 +84,33 @@ def test_VIC_SA1_Melbourne_CBD_multiple_to_DGGS():
     print(list_cells)
     assert set(test_dggs_lvl10_cells).issubset(set(list_cells)) == True       
 
+
+def try_SA1_flinders_Cape_Barren_multipoly_to_DGGS():
+    # read in the file
+    geojson = get_geojson('test_data/ABS_SA1_Flinders_Cape_Barren_Islands_multipoly.geojson')
+    list_cells = []
+
+    for fea in geojson['features']:  # for feature in attribute table        
+        polygon = geojson_to_shape(fea['geometry'])
+        thisbbox = bbox(list(coords(fea)))
+        cells = poly_to_DGGS_tool(polygon, '', 10, input_bbox=thisbbox)  # start at DGGS level 10
+
+        for item in cells:
+             print(item)
+             if(isinstance(item, list)):
+                list_cells.append(item[0])                 
+                
+             else:
+                list_cells.append(item)
+        #list_cells = list_cells + cells
+
+    test_dggs_lvl10_cells = ['R7847710830', 'R7847710752']
+    print(list_cells)
+    assert set(test_dggs_lvl10_cells).issubset(set(list_cells)) == True       
+
+
 if __name__ == "__main__":
     #test_ABS_SA1_shp_to_DGGS()
     #test_ABS_SA1_black_mountain_geojson_to_DGGS()
-    test_VIC_SA1_Melbourne_CBD_multiple_to_DGGS()
+    #test_VIC_SA1_Melbourne_CBD_multiple_to_DGGS()
+    #test_SA1_flinders_Cape_Barren_multipoly_to_DGGS()
