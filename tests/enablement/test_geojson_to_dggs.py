@@ -2,7 +2,7 @@ import pytest
 import shapefile
 from pyproj import Proj, transform
 import json
-from auspixdggs.callablemodules.call_DGGS import poly_to_DGGS_tool
+from auspixdggs.callablemodules.call_DGGS import poly_to_DGGS_tool, line_to_DGGS
 import geojson
 from geojson.utils import coords
 from shapely.geometry import Polygon, shape
@@ -111,9 +111,30 @@ def try_SA1_flinders_Cape_Barren_multipoly_to_DGGS():
     print(list_cells)
     assert set(test_dggs_lvl10_cells).issubset(set(list_cells)) == True       
 
+def test_geojson_line_data():
+    # read in the file
+    geojson = get_geojson_by_file('test_data/SA_RoadsExample_lines.geojson')
+    list_cells = []
+
+    for fea in geojson['features']:  # for feature in attribute table        
+        geom = geojson_to_shape(fea['geometry'])
+        cells = line_to_DGGS(geom, 10)  # start at DGGS level 10
+
+        for item in cells:
+             #print(item)
+             if(isinstance(item, list)):
+                list_cells.append(str(item[0]))                
+             else:
+                list_cells.append(str(item))
+        #list_cells = list_cells + cells
+
+    test_dggs_lvl10_cells = ['R7751215231', 'R7751215230', 'R7751223885', 'R7751218502']
+    print(list_cells)
+    assert set(test_dggs_lvl10_cells).issubset(set(list_cells)) == True    
 
 if __name__ == "__main__":
     #test_ABS_SA1_shp_to_DGGS()
-    test_ABS_SA1_black_mountain_geojson_to_DGGS()
+    #test_ABS_SA1_black_mountain_geojson_to_DGGS()
     #test_VIC_SA1_Melbourne_CBD_multiple_to_DGGS()
     #test_SA1_flinders_Cape_Barren_multipoly_to_DGGS()
+    test_geojson_line_data()
