@@ -9,7 +9,7 @@ from shapely.geometry import Polygon, shape
 
 
 
-def get_geojson(fname):
+def get_geojson_by_file(fname):
     data = None
     with open(fname) as json_file:
         data = geojson.load(json_file)
@@ -32,11 +32,12 @@ def bbox(coord_list):
 
 def test_ABS_SA1_black_mountain_geojson_to_DGGS():
     # read in the file
-    geojson = get_geojson('test_data/ACT_SA1_Black_Mountain.geojson')
+    geojson = get_geojson_by_file('test_data/ACT_SA1_Black_Mountain.geojson')
 
     for fea in geojson['features']:  # for feature in attribute table
-        
+        print("Type fea: {}".format(type(fea)))
         polygon = geojson_to_shape(fea['geometry'])
+        print("Type polygon: {}".format(type(polygon)))
         thisbbox = bbox(list(coords(fea)))
         cells = poly_to_DGGS_tool(polygon, '', 10, input_bbox=thisbbox)  # start at DGGS level 10
         test_dggs_lvl10_cells = ['R7852347722', 'R7852348371']
@@ -49,10 +50,11 @@ def test_ABS_SA1_black_mountain_geojson_to_DGGS():
 
 def test_NSW_SA1_sydney_haymarket_geojson_to_DGGS():
     # read in the file
-    geojson = get_geojson('test_data/NSW_SA1_Sydney_Haymarket.geojson')
+    geojson = get_geojson_by_file('test_data/NSW_SA1_Sydney_Haymarket.geojson')
 
     for fea in geojson['features']:  # for feature in attribute table        
         polygon = geojson_to_shape(fea['geometry'])
+        
         thisbbox = bbox(list(coords(fea)))
         cells = poly_to_DGGS_tool(polygon, '', 10, input_bbox=thisbbox)  # start at DGGS level 10
         test_dggs_lvl10_cells = ['R8607065772', 'R8607068112']
@@ -63,7 +65,7 @@ def test_NSW_SA1_sydney_haymarket_geojson_to_DGGS():
 
 def test_VIC_SA1_Melbourne_CBD_multiple_to_DGGS():
     # read in the file
-    geojson = get_geojson('test_data/VIC_SA1_Melbourne_CBD_multiple.geojson')
+    geojson = get_geojson_by_file('test_data/VIC_SA1_Melbourne_CBD_multiple.geojson')
     list_cells = []
 
     for fea in geojson['features']:  # for feature in attribute table        
@@ -88,7 +90,7 @@ def test_VIC_SA1_Melbourne_CBD_multiple_to_DGGS():
 #def test_SA1_flinders_Cape_Barren_multipoly_to_DGGS():
 def try_SA1_flinders_Cape_Barren_multipoly_to_DGGS():
     # read in the file
-    geojson = get_geojson('test_data/ABS_SA1_Flinders_Cape_Barren_Islands_multipoly.geojson')
+    geojson = get_geojson_by_file('test_data/ABS_SA1_Flinders_Cape_Barren_Islands_multipoly.geojson')
     list_cells = []
 
     for fea in geojson['features']:  # for feature in attribute table        
@@ -112,6 +114,6 @@ def try_SA1_flinders_Cape_Barren_multipoly_to_DGGS():
 
 if __name__ == "__main__":
     #test_ABS_SA1_shp_to_DGGS()
-    #test_ABS_SA1_black_mountain_geojson_to_DGGS()
+    test_ABS_SA1_black_mountain_geojson_to_DGGS()
     #test_VIC_SA1_Melbourne_CBD_multiple_to_DGGS()
     #test_SA1_flinders_Cape_Barren_multipoly_to_DGGS()
