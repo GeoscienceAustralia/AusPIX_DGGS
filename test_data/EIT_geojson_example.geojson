@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "EIT_geojson_example",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::4203" } },
+"features": [
+{ "type": "Feature", "properties": { "OBJECTID": 108, "FEATURETYP": "Substation", "DESCRIPTIO": "A structure in which high voltage electricity supply is converted, controlled or transformed", "CLASS": "Zone", "FID_": "110", "NAME": "Townsville Port", "OPERATIONA": "Operational", "STRUCTURET": null, "VOLTAGE": "66", "PLANIMETRI": null, "ADDRESS": null, "SUBURB": "South Townsville", "STATE": "Queensland", "ADDRESSSOU": null, "ATTRIBUTES": "AEMO-Australian Energy Market Operators 2012", "ATTRIBUTED": "12\/07\/2012", "FEATURESOU": "Esri World Imagery", "FEATUREDAT": "24\/05\/2013", "SPATIALCON": "5", "REVISED": "23\/02\/2017", "COMMENT": null }, "geometry": { "type": "Point", "coordinates": [ 146.832851945000016, -19.260236518411723 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 249, "FEATURETYP": "Substation", "DESCRIPTIO": "A structure in which high voltage electricity supply is converted, controlled or transformed", "CLASS": "Zone", "FID_": "253", "NAME": "Townsville East", "OPERATIONA": "Operational", "STRUCTURET": null, "VOLTAGE": "132", "PLANIMETRI": null, "ADDRESS": null, "SUBURB": "South Townsville", "STATE": "Queensland", "ADDRESSSOU": null, "ATTRIBUTES": "AEMO-Australian Energy Market Operators 2012", "ATTRIBUTED": "12\/07\/2012", "FEATURESOU": "Esri World Imagery", "FEATUREDAT": "24\/05\/2013", "SPATIALCON": "5", "REVISED": "23\/02\/2017", "COMMENT": null }, "geometry": { "type": "Point", "coordinates": [ 146.833767500000022, -19.261778999411675 ] } }
+]
+}
