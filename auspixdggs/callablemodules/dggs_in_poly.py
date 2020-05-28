@@ -7,7 +7,7 @@ Joseph Bell Geoscience Australia 2019
 
 '''
 
-from ..auspixengine.dggs import RHEALPixDGGS
+from dggs import RHEALPixDGGS
 import shapefile
 import numpy
 
@@ -118,7 +118,7 @@ def poly_to_DGGS_tool(myPoly, resolution):  # one poly and the attribute record 
     parts = myPoly.parts
 
     #print('parts starting at', parts)
-    parts.append(numPoints)  # add the location of the last point to the list for from to sequencing
+    parts.append(numPoints)  # add the location of the last point to the list for from-to sequencing
     #print('parts', parts)
 
     edgeData = list()  # we are going to make a list of edges based on pairs of points in each part
