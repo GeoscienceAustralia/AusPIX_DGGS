@@ -203,17 +203,23 @@ if __name__ == '__main__':
         print('cellx', this_poly_cells)
 
         # get attiributes (properties) of this poly
-        attribs = []
-        for prop in feature.properties.values():
-            attribs.append(prop)
-        print('props', attribs)
+        # attribs = []
+        # for prop in feature.properties.values():
+        #     attribs.append(prop)
+        # print('props', attribs)
 
         #feature.properties.foobar = 10
         for item in this_poly_cells:
             coords = [item[1], item[2]] # the long and lat
-            my_prop = list(feature.properties)
+            my_prop = feature.properties
+            my_Cell = {"AusPIX_DGGS": item[0]}
+
+            these_attributes = dict(list(my_Cell.items()) + list(my_prop.items()))
+            print('these attributes = ', these_attributes)
+
             # trying to automate this line to add all the SA1 attributes
-            newfile.add_feature(properties={"AusPIX_DGGS": item[0], "SA1code": attribs[0]}, geometry={"type": "Point", "coordinates": coords})
+            #newfile.add_feature(properties={"AusPIX_DGGS": item[0]}, geometry={"type": "Point", "coordinates": coords})
+            newfile.add_feature(properties=these_attributes, geometry={"type": "Point", "coordinates": coords})
 
 
 
