@@ -177,6 +177,8 @@ if __name__ == '__main__':
 
     my_bbox = testfile.bbox
     resolution = 10
+    # calc cell area
+    resArea = (rdggs.cell_area(resolution, plane=False))
 
     # for item in cells_inbb:
     #     print(item)
@@ -202,38 +204,18 @@ if __name__ == '__main__':
         print('num cells in this poly =', len(this_poly_cells))
         print('cellx', this_poly_cells)
 
-        # get attiributes (properties) of this poly
-        # attribs = []
-        # for prop in feature.properties.values():
-        #     attribs.append(prop)
-        # print('props', attribs)
-
-        #feature.properties.foobar = 10
         for item in this_poly_cells:
             coords = [item[1], item[2]] # the long and lat
             my_prop = feature.properties
-            my_Cell = {"AusPIX_DGGS": item[0]}
+            my_Cell = {"AusPIX_DGGS": item[0], "LongiWGS84": item[1], "LatiWGS84": item[2], "CellArea_M2": resArea}
 
+            #include the AusPIX cell information in attributes
             these_attributes = dict(list(my_Cell.items()) + list(my_prop.items()))
-            print('these attributes = ', these_attributes)
+            #print('these attributes = ', these_attributes)
 
-            # trying to automate this line to add all the SA1 attributes
-            #newfile.add_feature(properties={"AusPIX_DGGS": item[0]}, geometry={"type": "Point", "coordinates": coords})
             newfile.add_feature(properties=these_attributes, geometry={"type": "Point", "coordinates": coords})
 
 
 
     newfile.save("test_construct.geojson")
 
-
-
-
-
-
-
-
-
-
-        # set your own properties
-        # feature.properties = {"AusPIX": "R785635"}
-        # print(feature.properties)  # the feature attributes
