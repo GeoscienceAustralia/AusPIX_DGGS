@@ -2,7 +2,6 @@ import pytest
 import shapefile
 from pyproj import Proj, transform
 import json
-from auspixdggs.callablemodules.call_DGGS import poly_to_DGGS_tool
 import geojson
 from geojson.utils import coords
 from shapely.geometry import Polygon, shape
