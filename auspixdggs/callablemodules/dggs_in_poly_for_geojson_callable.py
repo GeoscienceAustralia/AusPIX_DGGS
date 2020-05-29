@@ -6,8 +6,11 @@ rdggs = RHEALPixDGGS() # make an instance
 
 def cells_in_poly(bbox, myPoly, resolution):
     # returns the cells in the poly and lat long of centroid
-    ''' a function to calculate DGGS cells within a bounding box then check which ones are in the Polygon
-    resolution is the DGGS resolution required  - normally 10 '''
+    ''' 
+    a function to calculate DGGS cells within a bounding box then check which ones are in the Polygon
+    resolution is the DGGS resolution required  - normally 10 
+    myPoly expects a sequence of coordinates
+    '''
 
     # convert the geojson bbox to an AusPIX bounding box
     nw = (bbox[0], bbox[3])
@@ -54,8 +57,8 @@ def cells_in_poly(bbox, myPoly, resolution):
     # # print('parts starting at', parts)
     # parts.append(numPoints)  # add the location of the last point to the list for from-to sequencing
     # # print('parts', parts)
-    print('to be a polygon the first and last points should be same - to close the polygon up' )
-    print('first n last', myPoly[0], myPoly[-1])  # check if closed - first and last will be same
+    #print('to be a polygon the first and last points should be same - to close the polygon up' )
+    #print('first n last', myPoly[0], myPoly[-1])  # check if closed - first and last will be same
 
 
     # calculate the edges of this poly into edgeDataList
