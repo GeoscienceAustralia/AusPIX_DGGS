@@ -3,7 +3,7 @@ from dggs import RHEALPixDGGS
 rdggs = RHEALPixDGGS() # make an instance
 
 '''
-developed at Geoscience Australiaby Joseph Bell June 2020
+developed at Geoscience Australia by Joseph Bell June 2020
 '''
 testfile = pygeoj.load(filepath=r'D:\Grahaeme\EIT_geojson_example.geojson')
 
