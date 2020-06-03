@@ -47,7 +47,7 @@ def point_set_from_bounds(resolution, ul, dr):
     # designed to replace rdggs.cells_from_region - which didn't work in the S (Antartic) zone 
     # a function to fill a bounding box with xy values (pointset) as seed points to build the set of cells from
     # works across the R to S divide even in the same polygon
-    step = 0.0001  # adjust step to suit DGGS resolution  in degrees Lat long - need improvement to help speed it up too
+    step = 0.0001 # adjust step to suit DGGS resolution  in degrees Lat long - need improvement to help speed it up too
     if resolution == 10:
         step = 0.0015  # OK setting for resolution 10
     pointset = []
@@ -78,11 +78,11 @@ def poly_to_DGGS_tool(myPoly, resolution):  # one poly and the attribute record 
     #print('nw', nw, 'se', se)
 
     bbox_myPoints = point_set_from_bounds(resolution, nw, se)
-    cell_list = []
+    cell_list = {} 
     for pt in bbox_myPoints:
         thiscell = rdggs.cell_from_point(resolution, pt, plane=False)
-        if thiscell not in cell_list:
-            cell_list.append(thiscell)
+        cell_string = str(thiscell)
+        cell_list[cell_string] = thiscell
 
 
     # # call function to calculate all the cells within the bounding box  - this function is not working properly in the S area
@@ -98,7 +98,7 @@ def poly_to_DGGS_tool(myPoly, resolution):  # one poly and the attribute record 
 
     # now find the centroids of those cells using dggs engine
     bboxCentroids = list() # declare a container to hold bbox centriods list for all the cells
-    for cell in cell_list:  # for each cell in the bounding box
+    for cell in cell_list.values():  # for each cell in the bounding box
         # print(cell, cell.nucleus(plane=False))
         location = cell.nucleus(plane=False)  # on the ellipsoid
         # make a list of cell location and x and y
@@ -239,7 +239,6 @@ if __name__ == '__main__':
 
     index = 0
     for fea in irrPolys:  # for feature in attribute table
-
             cells = poly_to_DGGS_tool(fea.shape, 10)  # start at DGGS level 10
 
     # for item in cellsInPoly:
