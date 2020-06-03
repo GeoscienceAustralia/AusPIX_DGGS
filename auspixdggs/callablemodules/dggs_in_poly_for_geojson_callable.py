@@ -4,7 +4,7 @@ import numpy
 from ..auspixengine.dggs import RHEALPixDGGS
 rdggs = RHEALPixDGGS() # make an instance
 
-def cells_in_poly(bbox, myPoly, resolution):
+def cells_in_poly(bbox, myPoly, resolution, return_cell_obj=False):
     # returns the cells in the poly and lat long of centroid
     ''' 
     a function to calculate DGGS cells within a bounding box then check which ones are in the Polygon
@@ -40,7 +40,10 @@ def cells_in_poly(bbox, myPoly, resolution):
     bboxCentroids = []  # declare a container to hold bbox centriods list for all the cells
     for cell in cell_List:  # for each cell in the bounding box
         location = cell.nucleus(plane=False)  # centroid on the ellipsoid
-        thisCentroid = [str(cell), location[0], location[1]]  # adds the xy too
+        if return_cell_obj:
+            thisCentroid = [cell, location[0], location[1]]  # adds the xy too 
+        else :
+            thisCentroid = [str(cell), location[0], location[1]]  # adds the xy too
         bboxCentroids.append(thisCentroid)
 
     # we now have a list of centroids within bounding box
@@ -125,7 +128,16 @@ def cells_in_poly(bbox, myPoly, resolution):
 
     return insidePoly
 
+def get_dggs_cell_bbox(dggs_cell):
+    verts = dggs_cell.vertices(plane=False)  # find the cell corners = vertices from the engine
+    verts.append(verts[0]) #add the first point to the end to make a closed poly
+    return verts
 
+def get_dggs_cell_geojson_geom(dggs_cell):
+    bbox = get_dggs_cell_bbox(dggs_cell)
+    geometry = {"type": "Point", "coordinates": bbox}
+    return geometry
+    
 def point_set_from_bounds(resolution, ul, dr):
     # designed to replace rdggs.cells_from_region - which didn't work in the S (Antartic) zone
     # a function to fill a bounding box with xy values (pointset) as seed points to build the set of cells from

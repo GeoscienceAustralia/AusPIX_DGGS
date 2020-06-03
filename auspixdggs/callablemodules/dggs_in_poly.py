@@ -7,7 +7,7 @@ Joseph Bell Geoscience Australia 2019
 
 '''
 
-from ..auspixengine.dggs import RHEALPixDGGS
+from dggs import RHEALPixDGGS
 import shapefile
 import numpy
 
