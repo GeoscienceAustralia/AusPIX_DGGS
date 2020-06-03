@@ -64,6 +64,12 @@ class Proj(object):
     f(u, v, radians=False, inverse=False).
     For example, see the healpix() function in ``pj_healpix.py``.
     """
+    # Provide a cache of the inner proj object for performance
+    cache_a = None
+    cache_e = None
+    cache_proj_type = None
+    cache_proj = None
+    cache_kwargs = None
     def __init__(self, ellipsoid=WGS84_ELLIPSOID, proj=None, **kwargs):
         self.proj = proj
         # Keyword arguments related to the projection but not to its
@@ -106,7 +112,16 @@ class Proj(object):
                 return
         else:
             # Use a projection from the PROJ.4 library.
-            f = pyproj.Proj(proj=proj, a=a, e=e, **kwargs)
+            # If the Proj object doesn't need to be recreate use the existing one
+            if Proj.cache_kwargs == kwargs and Proj.cache_a == a and Proj.cache_e == e and Proj.cache_proj_type == proj:
+                f = Proj.cache_proj
+            else:
+                Proj.cache_a = a
+                Proj.cache_e = e
+                Proj.cache_proj_type = proj
+                Proj.cache_kwargs = kwargs 
+                Proj.cache_proj = f = pyproj.Proj(proj=proj, a=a, e=e, **kwargs)
+
         if not inverse:
             # Translate longitudes and latitudes so that 
             # (lon_0, lat_0) maps to (0, 0) in the plane.
