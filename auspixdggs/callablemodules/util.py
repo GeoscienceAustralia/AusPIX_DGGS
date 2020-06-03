@@ -9,3 +9,9 @@ def dggs_cell_id_to_obj(dggs_cell_id):
         input_list.append(int(s))
     cell = rdggs.cell(input_list)
     return cell
+
+def dggs_cell_id_list_to_obj(dggs_cell_id_list):
+    res_list = []
+    for item in dggs_cell_id_list:
+        res_list.append(dggs_cell_id_to_obj(item))
+    return res_list
