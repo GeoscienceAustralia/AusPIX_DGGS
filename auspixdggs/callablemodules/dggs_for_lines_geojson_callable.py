@@ -1,5 +1,5 @@
 import pygeoj
-from dggs import RHEALPixDGGS
+from ..auspixengine.dggs import RHEALPixDGGS
 rdggs = RHEALPixDGGS() # make an instance
 
 '''
