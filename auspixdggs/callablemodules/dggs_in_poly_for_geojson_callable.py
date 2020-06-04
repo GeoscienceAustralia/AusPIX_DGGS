@@ -1,7 +1,7 @@
 #import geojson
 import pygeoj
 import numpy
-from ..auspixengine.dggs import RHEALPixDGGS
+from auspixdggs.auspixengine.dggs import RHEALPixDGGS
 rdggs = RHEALPixDGGS() # make an instance
 
 def cells_in_poly(bbox, myPoly, resolution, return_cell_obj=False):
