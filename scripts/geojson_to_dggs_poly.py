@@ -71,7 +71,7 @@ def transform_ABS_SA1_black_mountain_geojson_to_DGGS():
         bbox_coords = get_dggs_cell_bbox(cell)
         #print(bbox_coords)
         geom_obj = Polygon(bbox_coords)
-        feat = Feature(geometry=geom_obj) 
+        feat = Feature(geometry=geom_obj, properties={"dggs_cell_id": str(cell)}) 
         #print(feat)
         list_features.append(feat)
 
@@ -97,7 +97,7 @@ def transform_geojson_line_data():
         bbox_coords = get_dggs_cell_bbox(cell)
         #print(bbox_coords)
         geom_obj = Polygon(bbox_coords)
-        feat = Feature(geometry=geom_obj) 
+        feat = Feature(geometry=geom_obj, properties={"dggs_cell_id": str(cell)}) 
         #print(feat)
         list_features.append(feat)
 
