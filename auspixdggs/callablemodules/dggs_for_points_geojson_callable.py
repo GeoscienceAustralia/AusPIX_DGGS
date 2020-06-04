@@ -1,10 +1,21 @@
 import pygeoj
 from auspixdggs.auspixengine.dggs import RHEALPixDGGS
+from auspixdggs.callablemodules.util import transform_coordinates
+
 rdggs = RHEALPixDGGS() # make an instance
 
 '''
 developed at Geoscience Australia by Joseph Bell June 2020
 '''
+
+def latlong_to_DGGS(coords, resolution, from_epsg=None):
+    coords_to_use = coords
+    if from_epsg is not None:
+        coords_to_use = transform_coordinates(coords[0], coords[1], from_epsg, 4326) #convert to epsg:4326 or WGS84
+    # calculate the dggs cell from long and lat
+    thisCell = rdggs.cell_from_point(resolution, coords_to_use, plane=False)  # false = on the elipsoidal curve
+    # now have a dggs cell for that point
+    return thisCell
 
 def dggs_cells_for_points(geojson, resolution):
     # make an output file of DGGS centroid points with the at atttibute properties
@@ -17,8 +28,9 @@ def dggs_cells_for_points(geojson, resolution):
 
         coords = feature.geometry.coordinates  # xy
         print('geom', coords)
-
-        this_dggs_cell = rdggs.cell_from_point(resolution, coords, plane=False)  # false = on the elipsoidal curve
+        
+        #this_dggs_cell = rdggs.cell_from_point(resolution, coords, plane=False)  # false = on the elipsoidal curve
+        this_dggs_cell = latlong_to_DGGS(coords, resolution)
 
         print('found cell = ', this_dggs_cell)
 
