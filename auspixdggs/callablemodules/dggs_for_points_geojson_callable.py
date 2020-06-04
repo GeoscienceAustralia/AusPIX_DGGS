@@ -9,6 +9,11 @@ developed at Geoscience Australia by Joseph Bell June 2020
 '''
 
 def latlong_to_DGGS(coords, resolution, from_epsg=None):
+    '''
+    This function takes coords (array of x and y) and returns the dggs cell ID at an input resolution.
+    If from_epsg is set, then the coordinates are transformed to epsg:4326 or WGS84 (CRS that the DGGS engine expects)
+    using pyproj with the always_xy parameter set to True. Otherwise, it assumes coords are in WGS84.
+    '''
     coords_to_use = coords
     if from_epsg is not None:
         coords_to_use = transform_coordinates(coords[0], coords[1], from_epsg, 4326) #convert to epsg:4326 or WGS84
