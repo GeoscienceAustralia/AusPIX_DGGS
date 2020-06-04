@@ -1,4 +1,6 @@
 from ..auspixengine.dggs import RHEALPixDGGS
+from pyproj import Transformer
+
 rdggs = RHEALPixDGGS() # make an instance
 
 def dggs_cell_id_to_obj(dggs_cell_id):
@@ -15,3 +17,9 @@ def dggs_cell_id_list_to_obj(dggs_cell_id_list):
     for item in dggs_cell_id_list:
         res_list.append(dggs_cell_id_to_obj(item))
     return res_list
+
+def transform_coordinates(x, y, from_epsg, to_epsg):
+    epsg_from = "epsg:{}".format(from_epsg)
+    epsg_to = "epsg:{}".format(to_epsg)
+    transformer = Transformer.from_crs(epsg_from, epsg_to, always_xy=True)
+    return transformer.transform(x, y)
