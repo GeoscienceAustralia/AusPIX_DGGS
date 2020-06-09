@@ -47,29 +47,30 @@ def cells_in_poly(bbox, myPoly, resolution):
     numPoints = len(myPoly)
     print('total vertex in this poly', numPoints)
 
-    #assume no parts atm - needs to be done
-    # # find the parts of a poly - especially for polys with holes
-    # parts = myPoly.parts
-    #
-    # # print('parts starting at', parts)
-    # parts.append(numPoints)  # add the location of the last point to the list for from-to sequencing
-    # # print('parts', parts)
-    print('to be a polygon the first and last points should be same - to close the polygon up' )
-    print('first n last', myPoly[0], myPoly[-1])  # check if closed - first and last will be same
-
-
-    # calculate the edges of this poly into edgeDataList
     edgeData = list()  # we are going to make a list of edges based on pairs of points
-    previous = (0, 0)  # placeholder for previous point
-    #for pt in thisPolyPoints:
-    for pt in myPoly:
-        if previous != (0, 0):  # not the beginning
-            newEdge = (previous, pt)
-            #print('new edge', newEdge)
-            edgeData.append(newEdge)
-            previous = pt  # remember for the next interation
-        else:
-            previous = pt
+    #sort out the parts
+    for thisFeature in feature.geometry.coordinates:
+        # print()
+        # print('outer', item)
+        n = 0
+        for thing in thisFeature:
+            if n == 0:
+                print('new poly', thing)
+                n += 1
+            else:
+                print('hole in poly', thing)
+
+
+            previous = (0, 0)  # placeholder for previous point
+            for vertex in thing:
+                print(vertex)
+                if previous != (0, 0):  # not the beginning
+                    newEdge = (previous, vertex)
+                    # print('new edge', newEdge)
+                    edgeData.append(newEdge)
+                    previous = vertex  # remember for the next interation
+                else:
+                    previous = vertex
 
     # now we have a list of edges with a point on each end - all up it describes the poly
     print('number of edges', len(edgeData))
@@ -154,15 +155,8 @@ def line_intersect(m1, b1, m2, b2):
     if m1 == m2:
         print ("These lines are parallel!!!")
         return None
-    # y = mx + b
-    # Set both lines equal to find the intersection point in the x direction
-    # m1 * x + b1 = m2 * x + b2
-    # m1 * x - m2 * x = b2 - b1
-    # x * (m1 - m2) = b2 - b1
-    # x = (b2 - b1) / (m1 - m2)
+
     x = (b2 - b1) / (m1 - m2)
-    # Now solve for y -- use either line, because they are equal here
-    # y = mx + b
     y = m1 * x + b1
     return x,y
 
@@ -170,7 +164,9 @@ def line_intersect(m1, b1, m2, b2):
 
 
 if __name__ == '__main__':
-    testfile = pygeoj.load(filepath=r'D:\CSIRO\Test\BlackMountain3.geojson')
+    #testfile = pygeoj.load(filepath=r'D:\CSIRO\Test\BlackMountain3.geojson')
+    testfile = pygeoj.load(filepath=r'D:\CSIRO\ComplexPolyBasicGeoj.geojson')
+
 
     print('len', len(testfile)) # the number of features
     print('bbox', testfile.bbox) # the bounding box region of the entire file
@@ -196,11 +192,11 @@ if __name__ == '__main__':
     #work through the features (polygons) one by one and ask for DGGS cells
     for feature in testfile:
         print('first xxx ', feature.properties)  # the feature attributes - want to keep for output
+        print()
         #print('bbox', feature.geometry.bbox)  # the bounding box of the feature
         fea_bbox = feature.geometry.bbox
-        geom = feature.geometry.coordinates[0][0] # perhaps only outer ring - no holes - holes need to be added
-        print('geom', geom)
-        this_poly_cells = cells_in_poly(fea_bbox, geom, resolution)  # returns the cells in the poly and lat long of centroid
+
+        this_poly_cells = cells_in_poly(fea_bbox, feature.geometry.coordinates, resolution)  # returns the cells in the poly and lat long of centroid
 
         print('num cells in this poly =', len(this_poly_cells))
         print('cellx', this_poly_cells)
@@ -218,5 +214,5 @@ if __name__ == '__main__':
 
 
 
-    newfile.save("test_construct.geojson")
+    newfile.save("ComplexPolyBasicResult.geojson")  # will save where the script is run from unless the parth is specified
 
