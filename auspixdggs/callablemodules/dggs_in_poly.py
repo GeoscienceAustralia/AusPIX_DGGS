@@ -7,7 +7,7 @@ Joseph Bell Geoscience Australia 2019
 
 '''
 
-from dggs import RHEALPixDGGS
+from auspixdggs.auspixengine.dggs import RHEALPixDGGS
 import shapefile
 import numpy
 
@@ -58,13 +58,16 @@ def point_set_from_bounds(resolution, ul, dr):
             pointset.append(newpt)
     return pointset
 
-def poly_to_DGGS_tool(myPoly, resolution):  # one poly and the attribute record for it
+def poly_to_DGGS_tool(myPoly, resolution, input_bbox=None):  # one poly and the attribute record for it
     ''' a function to calculate DGGS cells within a polygon
     mypoly is the shape of the polygon
     resolution is the DGGS resolution required '''
 
     # find the bounding box of the polygon
-    bbox = myPoly.bbox
+    if input_bbox == None:
+        bbox = myPoly.bbox
+    else:
+        bbox = input_bbox
     # now find DGGS points inside the poly based on our desired resolution
 
     #print('this bbox coords = ', bbox) #print bounding box coords
