@@ -46,17 +46,19 @@ def get_cells_in_feature(fea, resolution):
     #print("Type geom: {}".format(type(geom)))
     curr_coords = list(coords(fea))
     thisbbox = bbox(curr_coords)
+    print(len(fea['geometry']['coordinates']))
     #cells = poly_to_DGGS_tool(polygon, '', 10, input_bbox=thisbbox)  # start at DGGS level 10   
     #listPolyCoords = list(polygon.exterior.coords)
+    print(len(curr_coords))
     cells = []
     if isinstance(geom, LineString) or isinstance(geom, MultiLineString): 
         res_cells = line_to_DGGS(geom, resolution)  # start at DGGS level 10   
         cells = [str(item) for item in res_cells] 
     elif isinstance(geom, Polygon) or  isinstance(geom, MultiPolygon):
-        res_cells = cells_in_poly(thisbbox, curr_coords, resolution)  # start at DGGS level 10    
+        res_cells = cells_in_poly(thisbbox, fea['geometry']['coordinates'], resolution)  # start at DGGS level 10    
         cells = [item[0] for item in res_cells]
     else: #try something anyway
-        cells = cells_in_poly(thisbbox, curr_coords, resolution)  # start at DGGS level 10    
+        cells = cells_in_poly(thisbbox, fea['geometry']['coordinates'], resolution)  # start at DGGS level 10    
         cells = [item[0] for item in res_cells]
 
     return cells
@@ -69,6 +71,14 @@ def test_ABS_SA1_black_mountain_geojson_to_DGGS():
     list_cells = get_cells_in_geojson(geojson, 10)    
     assert set(test_dggs_lvl10_cells).issubset(set(list_cells)) == True
 
+
+def test_complexPolyBasic():
+    # read in the file
+    geojson = get_geojson_by_file('test_data/ComplexPolyBasic.geojson')
+    test_dggs_lvl10_cells = ['R7852620003', 'R7852612225']
+    resolution = 10
+    list_cells = get_cells_in_geojson(geojson, 10)    
+    assert set(test_dggs_lvl10_cells).issubset(set(list_cells)) == True
 
 def test_NSW_SA1_sydney_haymarket_geojson_to_DGGS():
     # read in the file
@@ -109,8 +119,8 @@ def test_geojson_line_data():
     assert set(test_dggs_lvl10_cells).issubset(set(list_cells)) == True       
 
 if __name__ == "__main__":
-    #test_ABS_SA1_shp_to_DGGS()
-    #test_ABS_SA1_black_mountain_geojson_to_DGGS()
+    test_complexPolyBasic()
+    test_ABS_SA1_black_mountain_geojson_to_DGGS()
     #test_VIC_SA1_Melbourne_CBD_multiple_to_DGGS()
     #test_SA1_flinders_Cape_Barren_multipoly_to_DGGS()
-    test_geojson_line_data()
+    #test_geojson_line_data()
