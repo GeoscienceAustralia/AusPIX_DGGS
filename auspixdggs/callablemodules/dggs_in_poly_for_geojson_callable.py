@@ -55,7 +55,8 @@ def cells_in_poly(bbox, myPoly, resolution, return_cell_obj=False):
 
     edgeData = list()  # we are going to make a list of edges based on pairs of points
     #sort out the parts
-    for thisFeature in feature.geometry.coordinates:
+    
+    for thisFeature in myPoly:
         # print()
         # print('outer', item)
         n = 0
@@ -126,6 +127,7 @@ def cells_in_poly(bbox, myPoly, resolution, return_cell_obj=False):
             inPoly = False
         if inPoly:
             insidePoly.append(myPoint) # add to the cells in the poly
+            #print(myPoint[0])
 
     return insidePoly
 
@@ -180,7 +182,7 @@ def line_intersect(m1, b1, m2, b2):
 
 if __name__ == '__main__':
     #testfile = pygeoj.load(filepath=r'D:\CSIRO\Test\BlackMountain3.geojson')
-    testfile = pygeoj.load(filepath=r'D:\CSIRO\ComplexPolyBasicGeoj.geojson')
+    testfile = pygeoj.load(filepath=r'./test_data/ComplexPolyBasic.geojson')
 
 
     print('len', len(testfile)) # the number of features
@@ -210,6 +212,7 @@ if __name__ == '__main__':
         print()
         #print('bbox', feature.geometry.bbox)  # the bounding box of the feature
         fea_bbox = feature.geometry.bbox
+        print(feature.geometry.coordinates)
 
         this_poly_cells = cells_in_poly(fea_bbox, feature.geometry.coordinates, resolution)  # returns the cells in the poly and lat long of centroid
 
