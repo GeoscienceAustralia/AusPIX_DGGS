@@ -53,21 +53,6 @@ def cells_in_poly(bbox, myPoly, resolution, return_cell_obj=False):
     numPoints = len(myPoly)
     print('total vertex in this poly', numPoints)
 
-<<<<<<< HEAD
-    #assume no parts atm - needs to be done
-    # # find the parts of a poly - especially for polys with holes
-    # parts = myPoly.parts
-    #
-    # # print('parts starting at', parts)
-    # parts.append(numPoints)  # add the location of the last point to the list for from-to sequencing
-    # # print('parts', parts)
-    #print('to be a polygon the first and last points should be same - to close the polygon up' )
-    #print('first n last', myPoly[0], myPoly[-1])  # check if closed - first and last will be same
-
-
-    # calculate the edges of this poly into edgeDataList
-=======
->>>>>>> 4f8281865c99879f129e3dbc8b750776442fe5dc
     edgeData = list()  # we are going to make a list of edges based on pairs of points
     #sort out the parts
     for thisFeature in feature.geometry.coordinates:
