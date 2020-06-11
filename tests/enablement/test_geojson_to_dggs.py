@@ -1,7 +1,7 @@
 import pytest
 #from auspixdggs.callablemodules.call_DGGS import poly_to_DGGS_tool, line_to_DGGS
 from auspixdggs.callablemodules.dggs_in_poly_for_geojson_callable import cells_in_poly
-from auspixdggs.callablemodules.dggs_in_line import line_to_DGGS
+from auspixdggs.callablemodules.dggs_in_line import line_to_DGGS, densify_my_line
 import geojson
 from geojson.utils import coords
 from shapely.geometry import shape, LineString, MultiLineString, Polygon, MultiPolygon
@@ -40,27 +40,25 @@ def get_cells_in_geojson(geojson, resolution):
         list_cells = list(set(list_cells + list(set(cell_id_list))))
     return list_cells 
 
-def get_cells_in_feature(fea, resolution):
-    #print("Type fea: {}".format(type(fea)))
+def get_cells_in_feature(fea, resolution, cell_obj=True):
     geom = geojson_to_shape(fea['geometry'])
-    #print("Type geom: {}".format(type(geom)))
     curr_coords = list(coords(fea))
     thisbbox = bbox(curr_coords)
-    print(len(fea['geometry']['coordinates']))
-    #cells = poly_to_DGGS_tool(polygon, '', 10, input_bbox=thisbbox)  # start at DGGS level 10   
-    #listPolyCoords = list(polygon.exterior.coords)
-    print(len(curr_coords))
     cells = []
     if isinstance(geom, LineString) or isinstance(geom, MultiLineString): 
-        res_cells = line_to_DGGS(geom, resolution)  # start at DGGS level 10   
-        cells = [str(item) for item in res_cells] 
+        fea['geometry']['coordinates'] = densify_my_line(fea['geometry']['coordinates'], resolution)
+        curr_coords = list(coords(fea))
+        print(curr_coords)        
+        res_cells = line_to_DGGS(curr_coords, resolution)  # start at DGGS level 10   
+        cells = [str(item) for item in res_cells]
     elif isinstance(geom, Polygon) or  isinstance(geom, MultiPolygon):
         res_cells = cells_in_poly(thisbbox, fea['geometry']['coordinates'], resolution)  # start at DGGS level 10    
+        print(res_cells)
         cells = [item[0] for item in res_cells]
     else: #try something anyway
-        cells = cells_in_poly(thisbbox, fea['geometry']['coordinates'], resolution)  # start at DGGS level 10    
+        res_cells = cells_in_poly(thisbbox, fea['geometry']['coordinates'], resolution)  # start at DGGS level 10    
+        print(res_cells)
         cells = [item[0] for item in res_cells]
-
     return cells
 
 def test_ABS_SA1_black_mountain_geojson_to_DGGS():
