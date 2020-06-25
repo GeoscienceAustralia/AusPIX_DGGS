@@ -1,26 +1,12 @@
 import pygeoj
 from auspixdggs.auspixengine.dggs import RHEALPixDGGS
-from auspixdggs.callablemodules.util import transform_coordinates
+from auspixdggs.callablemodules.util import transform_coordinates, latlong_to_DGGS
 
 rdggs = RHEALPixDGGS() # make an instance
 
 '''
 developed at Geoscience Australia by Joseph Bell June 2020
 '''
-
-def latlong_to_DGGS(coords, resolution, from_epsg=None):
-    '''
-    This function takes coords (array of x and y) and returns the dggs cell ID at an input resolution.
-    If from_epsg is set, then the coordinates are transformed to epsg:4326 or WGS84 (CRS that the DGGS engine expects)
-    using pyproj with the always_xy parameter set to True. Otherwise, it assumes coords are in WGS84.
-    '''
-    coords_to_use = coords
-    if from_epsg is not None:
-        coords_to_use = transform_coordinates(coords[0], coords[1], from_epsg, 4326) #convert to epsg:4326 or WGS84
-    # calculate the dggs cell from long and lat
-    thisCell = rdggs.cell_from_point(resolution, coords_to_use, plane=False)  # false = on the elipsoidal curve
-    # now have a dggs cell for that point
-    return thisCell
 
 def dggs_cells_for_points(geojson, resolution):
     # make an output file of DGGS centroid points with the at atttibute properties
