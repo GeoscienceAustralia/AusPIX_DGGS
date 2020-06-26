@@ -16,23 +16,52 @@ def densify_my_line(line_to_densify, resolution):
     # math to define a suitable distance between vertices - ensures good representation of the line - a continuous run of cells to define the line
     min_dist = math.sqrt(float(resArea))/300000  # width of cell changes with sqrt of the area - 300000 is a constant that can be changed but will change output
 
+    try:
+        # first try multi-line construct (on failure try single line)
+        for line_points in line_to_densify:
+            edgeData = []  # we are going to make a list of edges based on pairs of vertices
+            previous = (0, 0)  # placeholder for previous point
+            for vertex in line_points:
+                #print(vertex)
+                if previous != (0, 0):  # not the beginning
+                    newEdgeMulti = (previous, vertex)
+                    #print('new edge', newEdge)
+                    edgeData.append(newEdgeMulti)
+                    previous = vertex  # remember for the next iteration
+                else:
+                    previous = vertex
+            # now calculate the length of segment
+            new_line = []
+            for edge in edgeData:
+                dx = edge[1][0] - edge[0][0]
+                dy = edge[1][1] - edge[0][1]
+                #print('dxdy', dx, dy)
+                line_length = math.sqrt((dx*dx) + (dy*dy))  # length in degrees
+                segments = round(line_length / min_dist)  # figure number of segments needed
+                if segments == 0:  # cannot be 0
+                    segments = 1  # chage zero to to one
+                densified_line = (split([edge[1][0], edge[1][1]], [edge[0][0], edge[0][1]], segments))  #using split function below
 
-    for line_points in line_to_densify:  # this is the outer [] for multi-line object
+                new_line.append(densified_line)  # add this segment into the output line
 
+    except:
+        # try for single line construct
         edgeData = []  # we are going to make a list of edges based on pairs of vertices
         previous = (0, 0)  # placeholder for previous point
-        for vertex in line_points:
-            #print(vertex)
+        for vertex in line_to_densify:  # this is the outer [] for multi-line object
             if previous != (0, 0):  # not the beginning
                 newEdge = (previous, vertex)
-                #print('new edge', newEdge)
+                print('new edge', newEdge)
                 edgeData.append(newEdge)
                 previous = vertex  # remember for the next iteration
             else:
                 previous = vertex
-        # now calculate the length of segment
-        new_line = []
+            # now calculate the length of segment
+            new_line = []
+        for segment in edgeData:
+            print('segment', segment)
         for edge in edgeData:
+            print('myEdge', edge)
             dx = edge[1][0] - edge[0][0]
             dy = edge[1][1] - edge[0][1]
             #print('dxdy', dx, dy)
@@ -43,7 +72,13 @@ def densify_my_line(line_to_densify, resolution):
             densified_line = (split([edge[1][0], edge[1][1]], [edge[0][0], edge[0][1]], segments))  #using split function below
 
             new_line.append(densified_line)  # add this segment into the output line
+
+    if len(new_line) == 0:
+    print('error nothing returned')
     return new_line  # we return this line in the datset with extra points along it (densified)
+
+# OLD multiline function deleted
+
 
 def split(start, end, segments):
     '''
