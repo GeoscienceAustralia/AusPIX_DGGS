@@ -55,36 +55,6 @@ def cells_in_poly(bbox, myPoly, resolution, return_cell_obj=False):
     numPoints = len(myPoly)
     print('total vertex in this poly', numPoints)
 
-    edgeData = list()  # we are going to make a list of edges based on pairs of points
-    #sort out the parts
-    
-    for thisFeature in myPoly:
-        # print()
-        # print('outer', item)
-        n = 0
-        for thing in thisFeature:
-            if n == 0:
-                #print('new poly', thing)
-                n += 1
-            else:
-                print('hole in poly', thing)
-
-
-            previous = (0, 0)  # placeholder for previous point
-            for vertex in thing:
-                print(vertex)
-                if previous != (0, 0):  # not the beginning
-                    newEdge = (previous, vertex)
-                    #print('new edge', newEdge)
-                    edgeData.append(newEdge)
-                    #print(edgeData)
-                    previous = vertex  # remember for the next interation
-                else:
-                    previous = vertex
-
-    # now we have a list of edges with a point on each end - all up it describes the poly
-    print('number of edges', len(edgeData))
-
     # now check if this centroid point is in poly
     npthings = []
     npholes = []
