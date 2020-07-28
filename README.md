@@ -4,6 +4,7 @@ The AusPIX DGGS is an Australian Government implimentation of the rHealpix DGGS 
 Date: June 2019
 
 Included in this repository is the rHealPIX "engine" and a series of scripts that use AusPIX in a variety of ways.
+There are several 'callable' modules that perform common tasks in DGGS space. These are in the "callable_modules" folder.
 
 Wrapper scripts developed by Bell, J.G. at Geoscience Australia.
 Geoscience eCat record: https://ecat.ga.gov.au/geonetwork/srv/eng/catalog.search#/metadata/140148
@@ -22,7 +23,7 @@ Gibb, R.G., 2016, “The rHealPIX Discrete Global Grid System” Proceedings of 
 
 Gibb R G, Raichev A and Speth M 2013 The rHEALPix Discrete Global Grid System URL http://dx.doi.org/10.7931/J2D21VHM
 
-Additionally there are several 'callable' modules that perform common tasks in DGGS space. These are in the "callable_modules" folder.
+
 
 
 ![rhealpix](https://user-images.githubusercontent.com/23160509/53066271-23aa4680-3523-11e9-8e6c-2f042f9befbf.png)
