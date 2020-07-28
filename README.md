@@ -4,7 +4,9 @@ The AusPIX DGGS is an Australian Government implimentation of the rHealpix DGGS 
 Date: June 2019
 
 Included in this repository is the rHealPIX "engine" and a series of scripts that use AusPIX in a variety of ways.
+
 Wrapper scripts developed by Bell, J.G. at Geoscience Australia.
+Geoscience eCat record: https://ecat.ga.gov.au/geonetwork/srv/eng/catalog.search#/metadata/140148
 
 Some speed enhancements by CSIRO under contract.
 
