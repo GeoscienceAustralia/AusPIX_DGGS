@@ -3,6 +3,7 @@ import pygeoj
 import math
 #import rhealpixdggs
 # uses pyPI module
+# pip install rHEALPixDGGS
 from rhealpixdggs.dggs import RHEALPixDGGS
 
 rdggs = RHEALPixDGGS()  # make an instance
