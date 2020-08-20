@@ -1,16 +1,24 @@
 import pygeoj
 
 import math
-#import rhealpixdggs
-# uses pyPI module
-# pip install rHEALPixDGGS
-from rhealpixdggs.dggs import RHEALPixDGGS
+#import rhealpixdggs # used module instead
+import concurrent.futures
+import numpy as np
+import time
+start = time.perf_counter()
+
+from rhealpixdggs.dggs import RHEALPixDGGS  # from imported module
 
 rdggs = RHEALPixDGGS()  # make an instance
 
 '''
 developed by Joseph Bell at Geoscience Australia June/August  2020
 '''
+
+def chunks(l, n):
+    return [l[i:i+n] for i in range(0, len(l), n)]
+
+
 def densify_my_line(line_to_densify, resolution):
     '''
     densify a line based on the resolution of the cells
@@ -97,75 +105,93 @@ def split(start, end, segments):
     return [start] + points + [end]
 
 
-def dggs_enable_line(thisfile, myOutput_location_and_name, resolution):
+def dggs_enable_line(thisTile):
     '''  takes a geojson file and adds AusPix DGGS cell information at the resolution called for
-    maintains any properties data for out but at the end
-    AusPix data in the first columns - then the properties data
-    '''
+        maintains any properties data for out but at the end
+        AusPix data in the first columns - then the properties data
+        '''
+    resolution = 12  # change to adjust cell size
+    myOutput_location_and_name = r"D:\graheam\output\ACT_Roads_"  + str(thisTile[1])# setup a unique name for this tile
+    print('doing', myOutput_location_and_name )
 
     # calc cell area in m2
-    resArea = (rdggs.cell_area(resolution, plane=False))
+    resArea = (rdggs.cell_area(resolution, plane=False))  # area od the cell at this resolution
 
-    # metadata
-    print('number of features', len(thisfile))  # the number of features
-    print('bbox of entire file', thisfile.bbox)  # the bounding box region of the entire file
-    print('area of each cell at this resolution', resArea)
-    print('crs', thisfile.crs)  # the coordinate reference system
-    print('attributes', thisfile.all_attributes)  # retrieves the combined set of all feature attributes
-    print('common attributes',
-          thisfile.common_attributes)  # retrieves only those field attributes that are common to all features
-    print()
-
-    # make an output file of DGGS centroid points with the at atttibute properties
     newfile = pygeoj.new()  # default projection is WGS84
 
-    #work through the features (lines) one by one and ask for DGGS cells
-    n=0
-
-    doneDGGScells = {}  # for all lines in the data - dictionary for speed
-    for feature in thisfile:   #each feature is an individual line
-        n = n + 1
-        #print('feature', n, 'of some')
-        print('')
+    doneDGGScells = {}  # dictionary keeps track od done cells so no repeats
+    # work through the features (lines) one by one and ask for DGGS cells
+    for fea in (thisTile[0]):   #each feature is an individual line
+        #print('')
         #print('feature attributes ', feature.properties)  # the feature attributes - want to keep for output
 
-        coords = feature.geometry.coordinates  # xy's along line
+        coords = fea.geometry.coordinates  # collect the xy's points along line
         #print('in_coords= ', (coords))
-        densified_coords = densify_my_line(coords, resolution)
-        #print('out coords = ', (densified_coords))
-        #track all line ID's
-
-        for item in densified_coords:
-
-
+        densified_coords = densify_my_line(coords, resolution) # call the densify function to ensure engough points along the line
+        for item in densified_coords: # choose the lines one at a time
             for coords in item:  # for this road or straight line look at all the points that describe it
-                #print('thispt', coords)
-                thisDGGS = rdggs.cell_from_point(resolution, coords, plane=False)  # false = on the elipsoidal curve
+                thisDGGS = rdggs.cell_from_point(resolution, coords, plane=False)  # find the DGGS cell each point belongs to
                 if str(thisDGGS) not in doneDGGScells:  # making sure cells are only done once
-                    doneDGGScells[str(thisDGGS)] = thisDGGS   # save as a done cell for this line
+                    doneDGGScells[str(thisDGGS)] = thisDGGS   # save as a done cell
                     verts = thisDGGS.vertices(plane=False)  # find the cell corners = vertices from the engine
-                    #print('v', verts[0])
                     verts.append(verts[0]) #add the first point to the end to make a closed poly
-                    #print('verts', verts)
-                    print('doing', str(thisDGGS))
+                    #print('doing', str(thisDGGS))
 
-                    my_prop = feature.properties
+                    my_prop = fea.properties # grab the existing attributes from this feature - to carrry to output file
 
-                    my_Cell = {"AusPIX_DGGS": str(thisDGGS), "CellArea_M2": resArea}
+                    my_Cell = {"AusPIX_DGGS": str(thisDGGS), "CellArea_M2": resArea}  # set up the dGGS information
 
-                    these_attributes = dict(list(my_Cell.items()) + list(my_prop.items()))
+                    these_attributes = dict(list(my_Cell.items()) + list(my_prop.items()))  # make up all the attributes for output
 
-                   # add the infomation to output file
+                    # add the infomation to output file
                     newfile.add_feature(properties=these_attributes,   geometry={"type": "Polygon", "coordinates": [verts]})
 
-
-
      #save the ouput geojson file
-    newfile.save(myOutput_location_and_name + '.geojson')  # saving file
+    newfile.save(myOutput_location_and_name + '.geojson') # saving file
 
 if __name__ == "__main__":
-    thisfile = pygeoj.load(filepath=r'D:\graheam\canberraStreetssmaple.geojson')
-    resolution = 12
+    thisfile = pygeoj.load(filepath=r'D:\ACT\ACT_Road_centrelines.geojson')
+    print( 'len thisFile', len(thisfile), 'lines')
+
+    #dividde the features into blocks or tiles
+    arr = np.array(thisfile)
+    tiles = np.array_split(arr, 40)   # number is how many tiles you want - not exactly tiles but actually parts
+
+    print('number of tiles/blocks = ', len(tiles))
+
+    my_data = []
+    count = 0
+    #print('first tile', tiles[0])
+
+    for tile in tiles:
+        count += 1
+        my_data.append([tile, count])  # adding a number to each part/tile for output reasons
+
+    with concurrent.futures.ProcessPoolExecutor(max_workers=12) as executor:    # use this one for multi processors = 12 depending on computer cores
+        results = [executor.submit(dggs_enable_line, s) for s in my_data]
+
+
+    # for  item in my_data: # enable this section to use just one processor with benifit od being able to see errors
+    #     dggs_enable_line(item)
+
+
+    #to merge the files it one if needed use 'Merge vector layers' in QGIS
+#(this part of script not working)
+    # import json  
+    # import glob
     #
-    # #call function
-    dggs_enable_line(thisfile, r'D:\graheam\canberraStreetssmapleDGGSd.geojson', resolution)
+    # result = []
+    # for f in glob.glob("D:\graheam\output\*.geojson"):
+    #     print('now merging ', f)
+    #     with open(f, "r") as infile:
+    #         result.append(json.load(infile))
+    #
+    # with open(r"D:\graheam\output\merged_file.geojson", "w") as outfile:
+    #     json.dump(result, outfile)
+    # creates a bad file ##############################################
+    #
+    print('finished')
+
+    # time it
+    finish = time.perf_counter()
+    print(f'Total Finished at {(finish - start)/60} mins ###########################')
