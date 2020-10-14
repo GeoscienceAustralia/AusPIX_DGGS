@@ -1,8 +1,10 @@
 #import geojson
 import pygeoj
+from numba import jit,njit
 import numpy
 from auspixdggs.auspixengine.dggs import RHEALPixDGGS
 rdggs = RHEALPixDGGS() # make an instance
+
 
 def cells_in_poly(bbox, myPoly, resolution, return_cell_obj=False):
     # returns the cells in the poly and lat long of centroid
@@ -53,81 +55,41 @@ def cells_in_poly(bbox, myPoly, resolution, return_cell_obj=False):
     numPoints = len(myPoly)
     print('total vertex in this poly', numPoints)
 
-    edgeData = list()  # we are going to make a list of edges based on pairs of points
-    #sort out the parts
-    
+    # now check if this centroid point is in poly
+    npthings = []
+    npholes = []
     for thisFeature in myPoly:
-        # print()
-        # print('outer', item)
         n = 0
         for thing in thisFeature:
+            npthing=numpy.array(thing)
             if n == 0:
-                print('new poly', thing)
+                #print('new poly', thing)
                 n += 1
+                npthings.append(npthing)
             else:
                 print('hole in poly', thing)
+                npholes.append(npthing)
 
-
-            previous = (0, 0)  # placeholder for previous point
-            for vertex in thing:
-                print(vertex)
-                if previous != (0, 0):  # not the beginning
-                    newEdge = (previous, vertex)
-                    # print('new edge', newEdge)
-                    edgeData.append(newEdge)
-                    previous = vertex  # remember for the next interation
-                else:
-                    previous = vertex
-
-    # now we have a list of edges with a point on each end - all up it describes the poly
-    print('number of edges', len(edgeData))
-
-    # now check if this centroid point is in poly
     for myPoint in bboxCentroids:
         # this code derived from scratch and has been applied to big jobs successfully
-
+        east = 0
         x = myPoint[1]
         y = myPoint[2]
-        east = 0
         # print('prev', previous)
-        for pair in edgeData:
-            # for each edge pair of points, see if that edge crosses the y of the point
-            if (pair[0][1] < y and pair[1][1] >= y) or (
-                    pair[0][1] > y and pair[1][1] <= y):  # yes crosses the point y value
+        inPoly = False
+        really = True
+        for npthing in npthings:
+            inPoly = ray_tracing(x,y, npthing)
+            if inPoly:
+                break
+        
+        for npthing in npholes:
+            really = not ray_tracing(x,y, npthing)
+            if not really:
+                break  
 
-                # if both x's are east of test dggs point then only count
-                if (pair[0][0] > x) and (pair[1][0] > x):  # then count
-                    # this point is definitly east
-                    east += 1
-
-                # if one x is east and one is west then need to calculate
-                if (pair[0][0] < x) and (pair[1][0] > x) or (pair[0][0] > x) and (pair[1][0] < x):
-                    # print('straddles on x dimension')
-                    # work out intersection useing shapely
-                    A = (pair[0][0], pair[0][1])  # edge starting  X and Y
-                    B = (pair[1][0], pair[1][1])  # edge finishing X and Y
-                    # print(A, B)
-
-                    C = (90.0, y)  # adjust if outside Australia
-                    D = (179.0, y)  # adjust if outside Australia
-
-                    slope_A = slope(A, B)
-                    slope_B = slope(C, D)
-                    y_int_A = y_intercept(A, slope_A)
-                    y_int_B = y_intercept(C, slope_B)
-                    intersect = (line_intersect(slope_A, y_int_A, slope_B, y_int_B))
-                    if float(intersect[0]) > x:  # this one is to the east
-                        # print('intersect', intersect)
-                        east = east + 1
-                # if totally west ingnore it
-        mod = east % 2
-        if mod > 0:
-            inPoly = True
-        else:
-            inPoly = False
-        if inPoly:
+        if inPoly and really:
             insidePoly.append(myPoint) # add to the cells in the poly
-            #print(myPoint[0])
 
     return insidePoly
 
@@ -157,26 +119,27 @@ def point_set_from_bounds(resolution, ul, dr):
     return pointset
 
 # line intersection function
-def slope(P1, P2):
-    # dy/dx
-    # (y2 - y1) / (x2 - x1)
-    return(P2[1] - P1[1]) / (P2[0] - P1[0])
-# line intersection function
-def y_intercept(P1, slope):
-    # y = mx + b
-    # b = y - mx
-    # b = P1[1] - slope * P1[0]
-    return P1[1] - slope * P1[0]
-# line intersection function
-def line_intersect(m1, b1, m2, b2):
-    if m1 == m2:
-        print ("These lines are parallel!!!")
-        return None
+@jit(nopython=True)
+def ray_tracing(x,y,poly):
+    # from https://stackoverflow.com/a/48760556  
+    n = len(poly)
+    inside = False
+    p2x = 0.0
+    p2y = 0.0
+    xints = 0.0
+    p1x,p1y = poly[0]
+    for i in range(n+1):
+        p2x,p2y = poly[i % n]
+        if y > min(p1y,p2y):
+            if y <= max(p1y,p2y):
+                if x <= max(p1x,p2x):
+                    if p1y != p2y:
+                        xints = (y-p1y)*(p2x-p1x)/(p2y-p1y)+p1x
+                    if p1x == p2x or x <= xints:
+                        inside = not inside
+        p1x,p1y = p2x,p2y
 
-    x = (b2 - b1) / (m1 - m2)
-    y = m1 * x + b1
-    return x,y
-
+    return inside
 
 
 
