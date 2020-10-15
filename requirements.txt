@@ -4,3 +4,4 @@ pyshp
 geojson
 Shapely>=1.7.0
 pygeoj
+numba
