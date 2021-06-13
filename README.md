@@ -1,7 +1,7 @@
 # AusPIX
 AusPIX is an Australian Government implimentation of the rHealpix DGGS. 
 
-AusPIX specifies the starting points of the rHealpix top-level cells to achineve some Australian aims, such as including most of the Australian continent within once cell.
+AusPIX specifies the starting points of the rHEALPix top-level cells to achineve some Australian aims, such as including most of the Australian continent within once cell.
 
 This repository contains the rHealPIX "engine" and a series of scripts that use AusPIX in a variety of ways.
 There are several 'callable' modules that perform common tasks in DGGS space. These are in the "callable_modules" folder.
@@ -48,11 +48,11 @@ Some speed enhancements by CSIRO under contract, Funded by the Australian Govern
 
 Initial guidance by Matt Purss, formerly based at Geosciece Australia.
 
-rHealPIX DGGS engine developed by Gibb, R.G _et al._
+rHEALPix DGGS engine developed by Gibb, R.G _et al._
 
-Source references for rHealPIX:
+Source references for rHEALPix:
 
-* Gibb, R.G. (2016) "The rHealPIX Discrete Global Grid System" Proceedings of the 9th Symposium of the International Society for Digital Earth (ISDE), Halifax, Nova Scotia, Canada. IOP Conf. Series: Earth and Environmental Science, 34, 012012. DOI: [10.1088/1755-1315/34/1/012012](https://doi.org/10.1088/1755-1315/34/1/012012)
+* Gibb, R.G. (2016) "The rHEALPix Discrete Global Grid System" Proceedings of the 9th Symposium of the International Society for Digital Earth (ISDE), Halifax, Nova Scotia, Canada. IOP Conf. Series: Earth and Environmental Science, 34, 012012. DOI: [10.1088/1755-1315/34/1/012012](https://doi.org/10.1088/1755-1315/34/1/012012)
 * Gibb R G, Raichev A and Speth M (2013) "The rHEALPix Discrete Global Grid System" DOI: [10.7931/J2D21VHM](https://doi.org/10.7931/J2D21VHM).
 
 
@@ -68,7 +68,7 @@ Please cite this work with the following BibTex description:
 
 ```bibtex
 @software{AusPIX_DGGS,
-  title = {{AusPIX: An Australian Government implimentation of the rHealpix DGGS in Python}},
+  title = {{AusPIX: An Australian Government implimentation of the rHEALPix DGGS in Python}},
   date = {2020},
   publisher = "Geoscience Australia",
   url = {https://github.com/GeoscienceAustralia/AusPIX_DGGS}
