@@ -6,6 +6,25 @@ AusPIX specifies the starting points of the rHEALPix top-level cells to achineve
 This repository contains the rHealPIX "engine" and a series of scripts that use AusPIX in a variety of ways.
 There are several 'callable' modules that perform common tasks in DGGS space. These are in the "callable_modules" folder.
 
+#AusPIX Framework for cross-referencing spatial data
+The AusPIX Framework is a system to spatially link geographical data for statistical cross-referencing. Point, line, polygon and raster data are referenced to DGGS cells to provide consistent and repeatable numbers. Any data that can be linked to a geography can be included, for example economic data collected on mesh-block or other ASGS series can be included. Environmental data collected as a raster can similarly be consumed and cross-referenced. 
+
+Document:
+https://ecat.ga.gov.au/geonetwork/srv/eng/catalog.search#/metadata/140152
+
+Search eCat for "AusPIX" to find other resources including descriptive videos.
+
+Example data-at-point query:
+https://olpk7700l6.execute-api.ap-southeast-2.amazonaws.com/dataDrill?lat84=-35.34385&long84=149.15772
+This query samples the data at that XY coordinate, suitable for automated machine interaction. 
+Human readable format will be similar but with a map for the user to select the point they are interested in. (NB. only works during Canberra Business hours)
+This tool lists all the geographies available in these 2 cross-walk tables.
+
+Example of an area-query, here we are asking for Water observations from Space breakdown for an ASGS single SA1 polygon feature:
+https://978uy7zro7.execute-api.ap-southeast-2.amazonaws.com/get?geography=sa1_main16&feature=11001118710&compareWith=wofs
+Any data that is in the system can be cross-reference equally as easily.
+
+
 
 ## Grid Imagery
 The following images show the structure and positioning of the AusPIX grid relative to the earth's globe.
