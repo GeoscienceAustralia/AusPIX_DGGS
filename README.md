@@ -24,9 +24,11 @@ Example of an area-query, here we are asking for Water observations from Space b
 https://978uy7zro7.execute-api.ap-southeast-2.amazonaws.com/get?geography=sa1_main16&feature=11001118710&compareWith=wofs
 Any data that is in the system can be cross-reference equally as easily.
 
+# DGGS usage
+DGGS tools can be used for many things. Here we have used DGGS to build and interact as an intelligent raster grid. This DGGS 'engine' is written in Python and supplies the grid at hierarchical levels, along with a set of functions for doing common tasks. DGGS provides a consistent and repeatable definition of a location as per the Loc-I concept.
+The code is now at https://pypi.org/project/rHEALPixDGGS/  for anyone to download and use. Other python algorithems have been developed for the AusPIX framework to build usable components and outputs.
 
-
-## Grid Imagery
+# Grid Imagery
 The following images show the structure and positioning of the AusPIX grid relative to the earth's globe.
 
 ![rhealpix](https://user-images.githubusercontent.com/23160509/53066271-23aa4680-3523-11e9-8e6c-2f042f9befbf.png)  
@@ -40,7 +42,7 @@ Figure 3:  Sample AusPIX level 10 cells (approx 140 x 140 m) near the lake in Ca
 
 
  
-## Installation 
+# Installation 
 
 `python setup.py install`  
 or   
@@ -50,7 +52,7 @@ or for development
 or   
 `pip install -e .`
 
-### Running tests
+# Running tests
 
 ``` 
 $ pip install pytests
@@ -58,7 +60,7 @@ $ python -m pytests tests/
 ```
 
 
-## Development History
+# Development History
 
 Wrapper scripts developed by Bell, J.G. at Geoscience Australia are catalogued with the follwing Geoscience eCat record: 
 * <http://pid.geoscience.gov.au/dataset/ga/140148>
@@ -75,14 +77,14 @@ Source references for rHEALPix:
 * Gibb R G, Raichev A and Speth M (2013) "The rHEALPix Discrete Global Grid System" DOI: [10.7931/J2D21VHM](https://doi.org/10.7931/J2D21VHM).
 
 
-## License & Rights
+# License & Rights
 
 Software in this repository is licensed for use under the [Apache 2.0 Software License](), a copy of the deed of which is contained in the [LICENSE](LICENSE) file.
 
 This work is copyright: &copy; Australian Government (Geosicence Australia), 2020.
 
 
-## Citation
+# Citation
 Please cite this work with the following BibTex description:
 
 ```bibtex
@@ -94,7 +96,7 @@ Please cite this work with the following BibTex description:
 }
 ```
 
-## Contact
+# Contact
 
 **Joseph G. Bell**  
 _Geospatial Data Scientist_  
