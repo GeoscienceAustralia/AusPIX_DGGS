@@ -6,7 +6,7 @@ AusPIX specifies the starting points of the rHEALPix top-level cells to achineve
 This repository contains the rHealPIX "engine" and a series of scripts that use AusPIX in a variety of ways.
 There are several 'callable' modules that perform common tasks in DGGS space. These are in the "callable_modules" folder.
 
-#AusPIX Framework for cross-referencing spatial data
+# AusPIX Framework for cross-referencing spatial data
 The AusPIX Framework is a system to spatially link geographical data for statistical cross-referencing. Point, line, polygon and raster data are referenced to DGGS cells to provide consistent and repeatable numbers. Any data that can be linked to a geography can be included, for example economic data collected on mesh-block or other ASGS series can be included. Environmental data collected as a raster can similarly be consumed and cross-referenced. 
 
 Document:
