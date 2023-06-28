@@ -1,9 +1,6 @@
 import pytest
 import geojson
 from geojson.utils import coords
-from shapely.geometry import shape, LineString, MultiLineString, Polygon, MultiPolygon
-from auspixdggs.callablemodules.dggs_in_poly_for_geojson_callable import cells_in_poly
-from auspixdggs.callablemodules.dggs_in_line import line_to_DGGS, densify_my_line
 from auspixdggs.callablemodules.util import geojson_to_shape, bbox, get_cells_in_feature, get_cells_in_geojson
 
 def get_geojson_by_file(fname):
